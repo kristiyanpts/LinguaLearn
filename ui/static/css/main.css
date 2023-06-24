@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+header {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+header img {
+  width: 120px;
+}
+
+.navlist {
+  position: relative;
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.navlist li a {
+  position: relative;
+  width: fit-content;
+  height: 50px;
+  background-color: #90e3f4;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  gap: 10px;
+  color: white;
+  border: 1px solid white;
+  transition: 0.3s all ease;
+}
+
+.navlist li a:hover {
+  background-color: white;
+  color: #90e3f4;
+  border: 1px solid #90e3f4;
+}
+
+.menu-icon {
+  position: relative;
+  width: fit-content;
+  height: 50px;
+  background-color: #90e3f4;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  gap: 10px;
+  color: white;
+  border: 1px solid white;
+  transition: 0.3s all ease;
+  cursor: pointer;
+}
+
+.menu-icon:hover {
+  background-color: white;
+  color: #90e3f4;
+  border: 1px solid #90e3f4;
+}
+
+footer {
+  position: relative;
+  width: 100%;
+  background-color: #90e3f4;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+footer .contact-info {
+  position: relative;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  font-size: 18px;
+}
+
+footer .copyright {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 20px;
+}
+
+footer .copyright a {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}
+
+footer .copyright a:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 1300px) {
+  .menu-icon {
+    display: flex;
+  }
+  header {
+    justify-content: space-between;
+    width: 99%;
+  }
+  .navlist {
+    position: absolute;
+    top: 10%;
+    right: -110%;
+    width: 400px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    gap: 5px;
+    padding: 10px 10px 10px 10px !important;
+    transition: 0.3s all ease;
+    z-index: 100;
+    border: 1px solid #90e3f4;
+  }
+  .navlist li {
+    width: 100%;
+  }
+  .navlist li a {
+    width: 90%;
+  }
+  .navlist.open {
+    right: 1%;
+  }
+  .welcome-info img {
+    display: none;
+  }
+  .home-info {
+    width: 100% !important;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  footer {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  footer .copyright {
+    flex-direction: column;
+    gap: 10px;
+  }
+  footer .contact-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .home-info .title {
+    font-size: 25px !important;
+  }
+  .home-info .desc {
+    font-size: 16px !important;
+  }
+  .home-info .controls a {
+    font-size: 16px !important;
+  }
+}
