@@ -33,7 +33,7 @@ header img {
   position: relative;
   width: fit-content;
   height: 50px;
-  background-color: #90e3f4;
+  background-color: #6291de;
   padding-left: 20px;
   padding-right: 20px;
   display: flex;
@@ -50,15 +50,15 @@ header img {
 
 .navlist li a:hover {
   background-color: white;
-  color: #90e3f4;
-  border: 1px solid #90e3f4;
+  color: #6291de;
+  border: 1px solid #6291de;
 }
 
 .menu-icon {
   position: relative;
   width: fit-content;
   height: 50px;
-  background-color: #90e3f4;
+  background-color: #6291de;
   padding-left: 20px;
   padding-right: 20px;
   display: none;
@@ -76,14 +76,14 @@ header img {
 
 .menu-icon:hover {
   background-color: white;
-  color: #90e3f4;
-  border: 1px solid #90e3f4;
+  color: #6291de;
+  border: 1px solid #6291de;
 }
 
 footer {
   position: relative;
   width: 100%;
-  background-color: #90e3f4;
+  background-color: #6291de;
   padding-top: 30px;
   padding-bottom: 30px;
   color: white;
@@ -144,7 +144,7 @@ footer .copyright a:hover {
     padding: 10px 10px 10px 10px !important;
     transition: 0.3s all ease;
     z-index: 100;
-    border: 1px solid #90e3f4;
+    border: 1px solid #6291de;
   }
   .navlist li {
     width: 100%;
@@ -163,6 +163,36 @@ footer .copyright a:hover {
     align-items: center;
     text-align: center;
   }
+}
+
+.notifications {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  width: 300px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1;
+}
+
+.notification {
+  position: relative;
+  width: 100%;
+  background-color: lightgreen;
+  color: white;
+  padding: 20px 20px 20px 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notification i {
+  position: relative;
+  width: 15%;
+  font-size: 20px;
 }
 
 @media only screen and (max-width: 1000px) {

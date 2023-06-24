@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #90e3f4;
+  background-color: #6291de;
   padding-top: 50px;
   padding-bottom: 50px;
 }
@@ -48,8 +48,8 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: #90e3f4;
-  border: 1px solid #90e3f4;
+  color: #6291de;
+  border: 1px solid #6291de;
   font-size: 20px;
   border-radius: 5px;
   transition: 0.3s all ease;
@@ -58,7 +58,7 @@
 .controls a:hover {
   color: white;
   border: 1px solid white;
-  background-color: #90e3f4;
+  background-color: #6291de;
 }
 
 .latest-courses {
@@ -97,8 +97,8 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  border: 1px solid #90e3f4;
-  background-color: #90e3f4;
+  border: 1px solid #6291de;
+  background-color: #6291de;
   color: white;
 }
 
@@ -136,8 +136,8 @@
   width: 95%;
   height: 40px;
   text-decoration: none;
-  color: #90e3f4;
-  border: 1px solid #90e3f4;
+  color: #6291de;
+  border: 1px solid #6291de;
   background-color: white;
   border-radius: 10px;
   display: flex;
@@ -150,5 +150,5 @@
 .course-info a:hover {
   color: white;
   border: 1px solid white;
-  background-color: #90e3f4;
+  background-color: #6291de;
 }

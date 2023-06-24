@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/main.css" />
+    <link rel="stylesheet" href="../static/css/auth.css" />
+    <link
+      rel="shortcut icon"
+      href="../static/images/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Home | LinguaLearn</title>
+  </head>
+  <body>
+    <header>
+      <img src="../static/images/logo.png" alt="" />
+      <ul class="navlist">
+        <li>
+          <a href=""><i class="fa-solid fa-house"></i> Home</a>
+        </li>
+        <li>
+          <a href=""><i class="fa-solid fa-book"></i> Courses</a>
+        </li>
+        <li>
+          <a href=""><i class="fa-solid fa-chalkboard-user"></i> Teachers</a>
+        </li>
+        <li>
+          <a href=""><i class="fa-solid fa-square-plus"></i> Create Course</a>
+        </li>
+        <li>
+          <a href=""><i class="fa-solid fa-file-signature"></i> Contact</a>
+        </li>
+        <li>
+          <a href=""><i class="fa-solid fa-user"></i> {{USERNAME}}</a>
+        </li>
+        <!-- <li>
+          <a href=""><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+        </li>
+        <li>
+          <a href=""><i class="fa-solid fa-user-plus"></i> Register</a>
+        </li> -->
+        <li>
+          <a href=""><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </li>
+      </ul>
+
+      <div class="menu-icon"><i class="fa-solid fa-bars"></i></div>
+    </header>
+
+    <section class="auth-page">
+      <form method="post" class="login-form">
+        <div class="auth-title">Sign In</div>
+        <div class="input-field">
+          <label for="password">Email:</label>
+          <i class="fa-solid fa-envelope"></i>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email address"
+          />
+        </div>
+        <div class="input-field">
+          <label for="password">Password:</label>
+          <i class="fa-solid fa-lock"></i>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter your password"
+          />
+        </div>
+        <button type="submit">Sign In</button>
+      </form>
+    </section>
+
+    <footer>
+      <div class="contact-info">
+        <div class="number"><i class="fa-solid fa-phone"></i> 012 345 6789</div>
+        <div class="location">
+          <i class="fa-solid fa-location-dot"></i> Petrich, Bulgaria
+        </div>
+        <div class="email">
+          <i class="fa-solid fa-envelope"></i> kristiqn3456@gmail.com
+        </div>
+      </div>
+      <div class="copyright">
+        <span>&copy; 2023 LinguLearn. All rights reserved.</span>
+        <span
+          >Designed & Developed by
+          <a href="https://github.com/kristiyanpts">Kristiyan Petsanov</a></span
+        >
+      </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>
