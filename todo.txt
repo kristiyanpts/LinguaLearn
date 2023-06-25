@@ -1,0 +1,9 @@
+courses should have a schedule done through a text area split by new line
+courses should have a level of difficulty (entry level, mid level, advanced level, expert level)
+courses should be able to be filtered by there level of difficulty
+courses must have a specific amount of open spots for people to join
+courses should be able to be deleted and edited by the owner
+courses should save the user that created it for the teachers tab
+logged in user shouldnt be allowed to join a course if the due date has passed
+once a user joins a course he cannot join it again
+----------------------------------------------------------------
