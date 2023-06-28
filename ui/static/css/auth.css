@@ -29,6 +29,7 @@
   border-radius: 10px;
   color: white;
   justify-content: center;
+  transition: 0.3s all ease;
 }
 
 .input-field {
