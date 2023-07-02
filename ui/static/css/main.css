@@ -222,3 +222,271 @@ footer .copyright a:hover {
     font-size: 16px !important;
   }
 }
+
+.courses-page {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+}
+
+.courses-info {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #6291de;
+  color: white;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.courses-info img {
+  width: 20%;
+}
+
+.courses-info .info {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.info .title {
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.info .desc {
+  font-size: 18px;
+}
+
+.info a {
+  position: relative;
+  width: 30%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #6291de;
+  border: 1px solid #6291de;
+  background-color: white;
+  border-radius: 10px;
+  transition: 0.3s all ease;
+}
+
+.info a:hover {
+  color: white;
+  border: 1px solid white;
+  background-color: #6291de;
+}
+
+.courses {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #6291de;
+  gap: 20px;
+}
+
+.courses .title {
+  font-size: 35px;
+  font-weight: 700;
+}
+
+.courses .filters {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  width: 700px;
+  height: fit-content;
+  flex-direction: column;
+}
+
+.filter-search {
+  position: relative;
+  width: 98.5%;
+}
+
+.filter-search input {
+  position: relative;
+  height: 40px;
+  border: none;
+  outline: none;
+  border: 1px solid #6291de;
+  width: 100%;
+  border-radius: 5px;
+  color: #6291de;
+  font-size: 20px;
+  padding-left: 5px;
+}
+
+.filter-search button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  outline: none;
+  color: #6291de;
+  background-color: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+  color: #6291de;
+  font-weight: 700;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #6291de;
+}
+
+.separator:not(:empty)::before {
+  margin-right: 0.25em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: 0.25em;
+}
+
+.level-filters {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.level-filters button {
+  position: relative;
+  width: fit-content;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid #6291de;
+  outline: none;
+  background-color: transparent;
+  color: #6291de;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s all ease;
+}
+
+.level-filters button:hover {
+  color: white;
+  background-color: #6291de;
+}
+
+.course-items {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.course {
+  position: relative;
+  width: 400px;
+  height: fit-content;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #6291de;
+  background-color: #6291de;
+  color: white;
+}
+
+.course img {
+  width: 400px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.course .course-info {
+  position: relative;
+  width: 100%;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.course-info .name {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.course-info .period {
+  position: relative;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.course-info a {
+  position: relative;
+  width: 95%;
+  height: 40px;
+  text-decoration: none;
+  color: #6291de;
+  border: 1px solid #6291de;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: 0.3s all ease;
+}
+
+.course-info a:hover {
+  color: white;
+  border: 1px solid white;
+  background-color: #6291de;
+}
+
+@media only screen and (max-width: 1300px) {
+  .courses-info img {
+    display: none;
+  }
+
+  .courses-info .info {
+    width: 500px;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .filters {
+    width: 400px !important;
+  }
+  .level-filters {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
