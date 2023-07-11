@@ -1,0 +1,65 @@
+.not-found-page {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.not-found {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #6291de;
+  gap: 300px;
+  background: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif)
+    no-repeat;
+  background-size: 800px 500px;
+}
+
+.code {
+  position: relative;
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.bottom {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.bottom .header {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.bottom a {
+  position: relative;
+  padding: 10px 30px 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #6291de;
+  border: 1px solid #6291de;
+  background-color: white;
+  border-radius: 10px;
+  transition: 0.3s all ease;
+}
+
+.bottom a:hover {
+  color: white;
+  border: 1px solid white;
+  background-color: #6291de;
+}
