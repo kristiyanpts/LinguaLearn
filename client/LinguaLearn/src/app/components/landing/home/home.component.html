@@ -1,1 +1,19 @@
-<p>home works!</p>
+<section class="home-page">
+  <div class="welcome-info">
+    <div class="home-info">
+      <div class="title">Learn your dream language fast, easy and free!</div>
+      <div class="desc">
+        Join our free courses and start learning your dream language today.
+        Register to start!
+      </div>
+      <div class="controls">
+        <a routerLink="/user/register">Register</a>
+        <a routerLink="/courses">Available Courses</a>
+      </div>
+    </div>
+    <img src="/assets/home-page.png" alt="" />
+  </div>
+
+  <!-- RECENT COURSES -->
+  <app-courses [showHeader]="false" />
+</section>

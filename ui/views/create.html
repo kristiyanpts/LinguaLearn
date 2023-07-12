@@ -149,13 +149,21 @@
         </div>
         <div class="input-field full-length">
           <label for="schedule">Course Schedule</label>
-          <textarea
-            name="schedule"
-            id="schedule"
-            cols="30"
-            rows="5"
-            placeholder="Schedule has to be split by new line &#10;(Ex. Introduction to English &#10;English verbs &#10;Past Participle Tense)"
-          ></textarea>
+          <input
+            type="text"
+            name="course-1"
+            id="course-1"
+            placeholder="Lesson 1"
+          />
+
+          <div class="schedule-controls">
+            <button>
+              <span>Add Lesson</span><i class="fa-solid fa-plus"></i>
+            </button>
+            <button>
+              <span>Remove Last Lesson</span><i class="fa-solid fa-minus"></i>
+            </button>
+          </div>
         </div>
         <button type="submit">Create Course</button>
       </form>

@@ -1,0 +1,151 @@
+.auth-page {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* color: white; */
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.auth-title {
+  position: relative;
+  font-size: 30px;
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+}
+
+.auth-form {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 800px;
+  background-color: #6291de;
+  padding: 50px 50px 50px 50px;
+  gap: 20px;
+  border-radius: 10px;
+  color: white;
+  justify-content: center;
+  transition: 0.3s all ease;
+}
+
+.input-field {
+  position: relative;
+  width: 350px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input-field label {
+  font-size: 18px;
+}
+
+.input-field input,
+.input-field select {
+  position: relative;
+  border: none;
+  outline: none;
+  height: 30px;
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.input-field input {
+  padding-left: 36px;
+}
+
+.input-field select {
+  height: 34px;
+}
+
+.input-field option {
+  color: black;
+}
+
+.input-field i {
+  position: absolute;
+  bottom: 18px;
+  left: 10px;
+  font-size: 20px;
+}
+
+.auth-form button,
+.login-form button {
+  position: relative;
+  width: 35%;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: white;
+  color: #6291de;
+  border: 1px solid #6291de;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s all ease;
+}
+
+.login-form button {
+  width: auto;
+}
+
+.auth-form button:hover,
+.login-form button:hover {
+  background-color: #6291de;
+  color: white;
+  border: 1px solid white;
+}
+
+.reffer {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+}
+
+.reffer a {
+  text-decoration: none;
+  color: white;
+}
+
+.reffer a:hover {
+  text-decoration: underline;
+}
+
+.important-message {
+  position: relative;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.login-form {
+  position: relative;
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+  background-color: #6291de;
+  padding: 40px 40px 40px 40px;
+  gap: 20px;
+  border-radius: 10px;
+  color: white;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 1000px) {
+  .auth-form {
+    width: 300px;
+  }
+  footer {
+    position: relative;
+  }
+}

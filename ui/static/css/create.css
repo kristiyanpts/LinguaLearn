@@ -106,6 +106,17 @@
   border: 1px solid white;
 }
 
+.schedule-controls {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.schedule-controls button i {
+  display: none;
+}
+
 @media only screen and (max-width: 1000px) {
   .create-form {
     width: 330px;
@@ -115,5 +126,14 @@
   }
   .create-form button {
     width: 250px;
+  }
+  .schedule-controls button {
+    width: 150px;
+  }
+  .schedule-controls button span {
+    display: none;
+  }
+  .schedule-controls button i {
+    display: block;
   }
 }

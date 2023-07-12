@@ -1,1 +1,39 @@
-<p>teachers works!</p>
+<section class="teachers-page">
+  <div class="teachers-info">
+    <img src="/assets/teacher-info.png" alt="" srcset="" />
+    <div class="info">
+      <div class="title">Meet the best teachers there is</div>
+      <div class="desc">
+        LinguaLearn has the best teachers there could be to help you improve
+        your language skills and learn new things. You won't be disappointed
+        from their teaching. Are you a qualified language teacher? If you are
+        and you want to join our team and make peoples dream come true, click
+        the button below!
+      </div>
+      <a href="">Start Teaching</a>
+    </div>
+  </div>
+  <div class="teachers">
+    <div class="title">Our Teachers</div>
+    <div class="filters">
+      <form class="filter-search">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search by name"
+        />
+        <button type="submit">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+    <div class="teacher-items">
+      <app-teacher-item />
+    </div>
+    <div class="no-teachers">
+      There are currently no teachers registered. <br />
+      Check back later!
+    </div>
+  </div>
+</section>

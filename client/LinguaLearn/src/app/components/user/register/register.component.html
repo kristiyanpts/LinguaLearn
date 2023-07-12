@@ -1,1 +1,107 @@
-<p>register works!</p>
+<section class="auth-page">
+  <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="auth-title">Register</div>
+    <div class="input-field">
+      <label for="email">Email:</label>
+      <i class="fa-solid fa-envelope"></i>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter your email address"
+        formControlName="email"
+        required
+      />
+    </div>
+    <div class="input-field">
+      <label for="username">Username:</label>
+      <i class="fa-solid fa-user"></i>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder="Enter your username"
+        formControlName="username"
+        required
+      />
+    </div>
+    <div class="input-field">
+      <label for="firstName">Firstname:</label>
+      <i class="fa-solid fa-signature"></i>
+      <input
+        type="text"
+        name="firstName"
+        id="firstName"
+        placeholder="Enter your firstname"
+        formControlName="firstName"
+        required
+      />
+    </div>
+    <div class="input-field">
+      <label for="lastName">Lastname:</label>
+      <i class="fa-solid fa-signature"></i>
+      <input
+        type="text"
+        name="lastName"
+        id="lastName"
+        placeholder="Enter your lastname"
+        formControlName="lastName"
+        required
+      />
+    </div>
+    <div class="input-field">
+      <label for="password">Password:</label>
+      <i class="fa-solid fa-lock"></i>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Enter your password"
+        formControlName="password"
+        required
+      />
+    </div>
+    <div class="input-field">
+      <label for="repass">Confirm Password:</label>
+      <i class="fa-solid fa-lock"></i>
+      <input
+        type="password"
+        name="repass"
+        id="repass"
+        placeholder="Confirm your password"
+        formControlName="repass"
+        required
+      />
+    </div>
+    <div class="input-field">
+      <label for="image">Profile Picture:</label>
+      <i class="fa-solid fa-image"></i>
+      <input
+        type="text"
+        name="image"
+        id="image"
+        placeholder="Enter your avatars URL"
+        formControlName="image"
+        required
+      />
+    </div>
+    <div class="input-field">
+      <label for="role">You are a:</label>
+      <select name="role" id="role" formControlName="role" required>
+        <option value="student" [selected]="true">Student</option>
+        <option value="teacher">Teacher</option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    <div class="important-message">
+      Before registering double check your selected role. They have the
+      following functionality: <br />- Teacher: <strong>Can create</strong> new
+      courses and <strong>can join</strong> already created ones. <br />-
+      Student: <strong>Can only join</strong> already created courses and
+      <strong>can not create</strong> new ones.
+    </div>
+    <div class="reffer">
+      Already have an acoount? <a routerLink="/user/login">Sign In</a>
+    </div>
+  </form>
+</section>

@@ -16,5 +16,6 @@ import { CoursesRoutingModule } from './courses-routing.module';
     CourseEditComponent,
   ],
   imports: [CommonModule, CoursesRoutingModule],
+  exports: [CoursesComponent],
 })
 export class CoursesModule {}

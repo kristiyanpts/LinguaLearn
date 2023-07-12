@@ -1,1 +1,30 @@
-<p>login works!</p>
+<section class="auth-page">
+  <form class="login-form">
+    <div class="auth-title">Sign In</div>
+    <div class="input-field">
+      <label for="password">Email:</label>
+      <i class="fa-solid fa-envelope"></i>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter your email address"
+      />
+    </div>
+    <div class="input-field">
+      <label for="password">Password:</label>
+      <i class="fa-solid fa-lock"></i>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Enter your password"
+      />
+    </div>
+    <button type="submit">Sign In</button>
+    <div class="reffer">
+      Haven't created an account yet?
+      <a routerLink="/user/register">Register</a>
+    </div>
+  </form>
+</section>

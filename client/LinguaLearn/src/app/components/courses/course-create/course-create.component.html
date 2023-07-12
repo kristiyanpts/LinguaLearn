@@ -1,1 +1,74 @@
-<p>course-create works!</p>
+<section class="create-page">
+  <form method="post" class="create-form">
+    <div class="create-title">Create Course</div>
+
+    <div class="input-field">
+      <label for="name">Course Name</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Entry-Level English Course"
+      />
+    </div>
+    <div class="input-field">
+      <label for="image">Course Image URL</label>
+      <input
+        type="text"
+        name="image"
+        id="image"
+        placeholder="https://exmaple-image.png"
+      />
+    </div>
+    <div class="input-field">
+      <label for="level">Course Level</label>
+      <select name="level" id="level">
+        <option value="entry">Entry Level</option>
+        <option value="mid">Mid Level</option>
+        <option value="advanced">Advanced Level</option>
+        <option value="expert">Expert Level</option>
+      </select>
+    </div>
+    <div class="input-field">
+      <label for="capacity">Course Capacity</label>
+      <input
+        type="number"
+        name="capacity"
+        id="capacity"
+        max="100"
+        min="1"
+        placeholder="25"
+      />
+    </div>
+    <div class="input-field">
+      <label for="date">Course Start Date</label>
+      <input type="date" name="date" id="date" />
+    </div>
+    <div class="input-field">
+      <label for="duration">Course Duration</label>
+      <input type="text" name="duration" id="duration" placeholder="6 months" />
+    </div>
+    <div class="input-field full-length">
+      <label for="description">Course Description</label>
+      <textarea
+        name="description"
+        id="description"
+        cols="30"
+        rows="5"
+        placeholder="This course will help you get started with English!"
+      ></textarea>
+    </div>
+    <div class="input-field full-length">
+      <label for="schedule">Course Schedule</label>
+      <input type="text" name="course-1" id="course-1" placeholder="Lesson 1" />
+
+      <div class="schedule-controls">
+        <button><span>Add Lesson</span><i class="fa-solid fa-plus"></i></button>
+        <button>
+          <span>Remove Last Lesson</span><i class="fa-solid fa-minus"></i>
+        </button>
+      </div>
+    </div>
+    <button type="submit">Create Course</button>
+  </form>
+</section>
