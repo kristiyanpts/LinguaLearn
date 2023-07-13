@@ -1,5 +1,5 @@
 <section class="auth-page">
-  <form class="login-form">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="auth-title">Sign In</div>
     <div class="input-field">
       <label for="password">Email:</label>
@@ -9,6 +9,8 @@
         name="email"
         id="email"
         placeholder="Enter your email address"
+        formControlName="email"
+        required
       />
     </div>
     <div class="input-field">
@@ -19,9 +21,11 @@
         name="password"
         id="password"
         placeholder="Enter your password"
+        formControlName="password"
+        required
       />
     </div>
-    <button type="submit">Sign In</button>
+    <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
     <div class="reffer">
       Haven't created an account yet?
       <a routerLink="/user/register">Register</a>

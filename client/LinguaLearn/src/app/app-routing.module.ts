@@ -8,9 +8,13 @@ import { TeachersComponent } from './components/teachers/teachers/teachers.compo
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
-  { path: 'home', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'home', component: HomeComponent, title: 'Home | LinguaLearn' },
+  { path: 'about', component: AboutComponent, title: 'About | LinguaLearn' },
+  {
+    path: 'contact',
+    component: ContactComponent,
+    title: 'Contact Us | LinguaLearn',
+  },
   {
     path: 'courses',
     loadChildren: () =>
@@ -26,8 +30,14 @@ const routes: Routes = [
   {
     path: 'teachers',
     component: TeachersComponent,
+    title: 'Teachers | LinguaLearn',
   },
-  { path: '**', pathMatch: 'full', component: NotFoundComponent },
+  {
+    path: '**',
+    pathMatch: 'full',
+    component: NotFoundComponent,
+    title: '404 | LinguaLearn',
+  },
 ];
 
 @NgModule({

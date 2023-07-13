@@ -24,7 +24,16 @@ function register(req, res, next) {
   } = req.body;
 
   return userModel
-    .create({ email, username, password, firstName, lastName, image, role })
+    .create({
+      email,
+      username,
+      password,
+      repeatPassword,
+      firstName,
+      lastName,
+      image,
+      role,
+    })
     .then((createdUser) => {
       createdUser = bsonToJson(createdUser);
       createdUser = removePassword(createdUser);
@@ -65,6 +74,8 @@ function register(req, res, next) {
 
 function login(req, res, next) {
   const { email, password } = req.body;
+
+  console.log(req.body);
 
   userModel
     .findOne({ email })

@@ -7,9 +7,21 @@ import { CourseEditComponent } from './course-edit/course-edit.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: CoursesComponent },
-  { path: 'create', component: CourseCreateComponent },
-  { path: ':courseId', component: CourseDetailsComponent },
-  { path: ':courseId/edit', component: CourseEditComponent },
+  {
+    path: 'create',
+    component: CourseCreateComponent,
+    title: 'Create Course | LinguaLearn',
+  },
+  {
+    path: ':courseId',
+    component: CourseDetailsComponent,
+    title: 'Course Details | LinguaLearn',
+  },
+  {
+    path: ':courseId/edit',
+    component: CourseEditComponent,
+    title: 'Edit Course | LinguaLearn',
+  },
 ];
 
 @NgModule({

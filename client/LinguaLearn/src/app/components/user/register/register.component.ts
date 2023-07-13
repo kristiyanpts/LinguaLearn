@@ -6,6 +6,8 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +15,8 @@ import {
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  constructor(private authService: AuthService, private router: Router) {}
+
   registerForm = new FormGroup(
     {
       email: new FormControl('', [
@@ -45,13 +49,13 @@ export class RegisterComponent {
       ]),
       role: new FormControl('', [Validators.required]),
     },
-    this.passwordMatch('password', 'repass')
+    this.arePasswordsMatching()
   );
 
-  passwordMatch(password: string, confirmPassword: string): ValidatorFn {
+  arePasswordsMatching(): ValidatorFn {
     return (formGroup: AbstractControl): { [key: string]: any } | null => {
-      const passwordControl = formGroup.get(password);
-      const confirmPasswordControl = formGroup.get(confirmPassword);
+      const passwordControl = formGroup.get('password');
+      const confirmPasswordControl = formGroup.get('repass');
 
       if (!passwordControl || !confirmPasswordControl) {
         return null;
@@ -74,5 +78,12 @@ export class RegisterComponent {
     };
   }
 
-  onSubmit() {}
+  onSubmit() {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/']);
+    } else {
+      console.log(this.registerForm.value);
+      this.authService.register(this.registerForm.value).subscribe();
+    }
+  }
 }

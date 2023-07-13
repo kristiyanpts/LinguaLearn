@@ -141,6 +141,14 @@
   justify-content: center;
 }
 
+input.ng-invalid.ng-touched {
+  border: red 1px solid;
+}
+
+input.ng-valid.ng-touched {
+  border: 1px solid greenyellow;
+}
+
 @media only screen and (max-width: 1000px) {
   .auth-form {
     width: 300px;

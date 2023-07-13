@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   isMenuShown: boolean = false;
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   toggleMenu(): void {
     this.isMenuShown = !this.isMenuShown;
@@ -16,5 +18,17 @@ export class HeaderComponent {
 
   getMenuClass(): string {
     return this.isMenuShown ? 'open' : '';
+  }
+
+  logout(): void {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/user/login']);
+    } else {
+      this.authService
+        .logout()
+        .subscribe
+        //todo: remove any session storage
+        ();
+    }
   }
 }
