@@ -1,5 +1,5 @@
 <section class="create-page">
-  <form method="post" class="create-form">
+  <form class="create-form" [formGroup]="createForm">
     <div class="create-title">Create Course</div>
 
     <div class="input-field">
@@ -9,6 +9,8 @@
         name="name"
         id="name"
         placeholder="Entry-Level English Course"
+        formControlName="name"
+        required
       />
     </div>
     <div class="input-field">
@@ -18,11 +20,13 @@
         name="image"
         id="image"
         placeholder="https://exmaple-image.png"
+        formControlName="image"
+        required
       />
     </div>
     <div class="input-field">
       <label for="level">Course Level</label>
-      <select name="level" id="level">
+      <select name="level" id="level" formControlName="level" required>
         <option value="entry">Entry Level</option>
         <option value="mid">Mid Level</option>
         <option value="advanced">Advanced Level</option>
@@ -38,15 +42,30 @@
         max="100"
         min="1"
         placeholder="25"
+        formGroupName="capacity"
+        required
       />
     </div>
     <div class="input-field">
       <label for="date">Course Start Date</label>
-      <input type="date" name="date" id="date" />
+      <input
+        type="date"
+        name="date"
+        id="date"
+        formControlName="date"
+        required
+      />
     </div>
     <div class="input-field">
       <label for="duration">Course Duration</label>
-      <input type="text" name="duration" id="duration" placeholder="6 months" />
+      <input
+        type="text"
+        name="duration"
+        id="duration"
+        placeholder="6 months"
+        formControlName="duration"
+        required
+      />
     </div>
     <div class="input-field full-length">
       <label for="description">Course Description</label>
@@ -56,11 +75,20 @@
         cols="30"
         rows="5"
         placeholder="This course will help you get started with English!"
+        formControlName="description"
+        required
       ></textarea>
     </div>
     <div class="input-field full-length">
       <label for="schedule">Course Schedule</label>
-      <input type="text" name="course-1" id="course-1" placeholder="Lesson 1" />
+      <input
+        type="text"
+        name="course-1"
+        id="course-1"
+        placeholder="Lesson 1"
+        formControlName="course-1"
+        required
+      />
 
       <div class="schedule-controls">
         <button><span>Add Lesson</span><i class="fa-solid fa-plus"></i></button>
