@@ -137,3 +137,11 @@
     display: block;
   }
 }
+
+input.ng-invalid.ng-touched {
+  border: red 1px solid;
+}
+
+input.ng-valid.ng-touched {
+  border: 1px solid greenyellow;
+}

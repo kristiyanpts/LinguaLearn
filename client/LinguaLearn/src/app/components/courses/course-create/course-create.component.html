@@ -1,5 +1,5 @@
 <section class="create-page">
-  <form class="create-form" [formGroup]="createForm">
+  <form class="create-form" [formGroup]="createForm" (ngSubmit)="onSubmit()">
     <div class="create-title">Create Course</div>
 
     <div class="input-field">
@@ -42,7 +42,7 @@
         max="100"
         min="1"
         placeholder="25"
-        formGroupName="capacity"
+        formControlName="capacity"
         required
       />
     </div>
@@ -81,22 +81,169 @@
     </div>
     <div class="input-field full-length">
       <label for="schedule">Course Schedule</label>
-      <input
-        type="text"
-        name="course-1"
-        id="course-1"
-        placeholder="Lesson 1"
-        formControlName="course-1"
-        required
-      />
+
+      <ng-container
+        formArrayName="courses"
+        *ngFor="let course of courses.controls; index as i"
+      >
+        <ng-container [formGroupName]="i">
+          <input
+            type="text"
+            name="lessonName{{ i + 1 }}"
+            id="lessonName{{ i + 1 }}"
+            placeholder="Lesson {{ i + 1 }} - Name"
+            formControlName="lessonName"
+            required
+          />
+          <input
+            type="date"
+            name="lessonDate{{ i + 1 }}"
+            id="lessonDate{{ i + 1 }}"
+            placeholder="Lesson {{ i + 1 }} - Date"
+            formControlName="lessonDate"
+            [min]="createForm.controls.date.value"
+            required
+          />
+        </ng-container>
+      </ng-container>
 
       <div class="schedule-controls">
-        <button><span>Add Lesson</span><i class="fa-solid fa-plus"></i></button>
-        <button>
+        <button (click)="addLesson()" type="button">
+          <span>Add Lesson</span><i class="fa-solid fa-plus"></i>
+        </button>
+        <button (click)="removeLesson()" type="button">
           <span>Remove Last Lesson</span><i class="fa-solid fa-minus"></i>
         </button>
       </div>
     </div>
-    <button type="submit">Create Course</button>
+
+    <div
+      class="form-errors full-length"
+      *ngIf="createForm.touched && createForm.invalid"
+    >
+      <div class="title">Form Invalid</div>
+
+      <!-- Name Validations -->
+      <ng-container *ngIf="createForm.controls.name.touched">
+        <div
+          class="form-error"
+          *ngIf="createForm.controls.name.errors?.['required']"
+        >
+          <span>Name is required.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="createForm.controls.name.errors?.['minlength']"
+        >
+          <span>Name must be at least 5 characters long.</span>
+        </div>
+      </ng-container>
+
+      <!-- Image Validations -->
+      <ng-container *ngIf="createForm.controls.image.touched">
+        <div
+          class="form-error"
+          *ngIf="createForm.controls.image.errors?.['required']"
+        >
+          <span>Image is required.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="createForm.controls.image.errors?.['pattern']"
+        >
+          <span>Image URL is invalid.</span>
+        </div>
+      </ng-container>
+
+      <!-- Level Validations -->
+      <ng-container *ngIf="createForm.controls.level.touched">
+        <div
+          class="form-error"
+          *ngIf="createForm.controls.level.errors?.['required']"
+        >
+          <span>Level is required.</span>
+        </div>
+      </ng-container>
+
+      <!-- Capacity Validations -->
+      <ng-container *ngIf="createForm.controls.capacity.touched">
+        <div
+          class="form-error"
+          *ngIf="createForm.controls.capacity.errors?.['required']"
+        >
+          <span>Capacity is required.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="createForm.controls.capacity.errors?.['min']"
+        >
+          <span>Capacity must be 1 or above.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="createForm.controls.capacity.errors?.['max']"
+        >
+          <span>Capacity must be 100 or below.</span>
+        </div>
+      </ng-container>
+
+      <!-- Date Validations -->
+      <ng-container *ngIf="createForm.controls.date.touched">
+        <div
+          class="form-error"
+          *ngIf="createForm.controls.date.errors?.['required']"
+        >
+          <span>Date is required.</span>
+        </div>
+      </ng-container>
+
+      <!-- Duration Validations -->
+      <ng-container *ngIf="createForm.controls.duration.touched">
+        <div
+          class="form-error"
+          *ngIf="createForm.controls.duration.errors?.['required']"
+        >
+          <span>Duration is required.</span>
+        </div>
+      </ng-container>
+
+      <!-- Description Validations -->
+      <ng-container *ngIf="createForm.controls.description.touched">
+        <div
+          class="form-error"
+          *ngIf="createForm.controls.description.errors?.['required']"
+        >
+          <span>Description is required.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="createForm.controls.description.errors?.['minlength']"
+        >
+          <span>Description must be at least 10 characters long.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="createForm.controls.description.errors?.['maxlength']"
+        >
+          <span>Description must be max 200 characters long.</span>
+        </div>
+      </ng-container>
+
+      <!-- Lessons Validation -->
+      <ng-container *ngIf="createForm.controls.courses.invalid">
+        <div class="form-error" *ngIf="createForm.controls.courses.invalid">
+          <span>Not all lesson data is filled in.</span>
+        </div>
+      </ng-container>
+
+      <!-- All data validation -->
+      <ng-container *ngIf="createForm.touched">
+        <div class="form-error" *ngIf="createForm.invalid">
+          <span>Not all data is filled in or not all data is correct.</span>
+        </div>
+      </ng-container>
+    </div>
+
+    <button type="submit" [disabled]="createForm.invalid">Create Course</button>
   </form>
 </section>

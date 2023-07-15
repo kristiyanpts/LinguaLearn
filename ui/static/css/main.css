@@ -534,3 +534,43 @@ svg {
     gap: 10px;
   }
 }
+
+.form-errors {
+  position: relative;
+  height: fit-content;
+  width: 91% !important;
+  padding: 10px;
+  background-color: #f72f49;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.form-errors .title {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.form-error {
+  position: relative;
+  width: 330px;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.form-error span:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f057";
+  display: inline-block;
+  padding-right: 10px;
+  vertical-align: middle;
+  font-weight: 900;
+}
