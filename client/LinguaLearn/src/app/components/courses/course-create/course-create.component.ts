@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
-import {
-  AbstractControl,
-  FormArray,
-  FormControl,
-  FormGroup,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { LessonModel } from 'src/app/core/models/lessonModel';
 import { NotificationService } from 'src/app/core/services/notification.service';
+import { checkDates } from './validators/date.validator';
 
 @Component({
   selector: 'app-course-create',
@@ -84,6 +79,18 @@ export class CourseCreateComponent {
   constructor(private notificationService: NotificationService) {}
 
   onSubmit() {
-    console.log(this.createForm.value);
+    let courseDate: string = this.createForm.get('date')?.value || '';
+    let lessonDates: LessonModel[] =
+      (this.createForm.get('courses')?.value as LessonModel[]) || [];
+
+    if (checkDates(courseDate, lessonDates) == false) {
+      this.notificationService.showNotification(
+        'error',
+        'Error',
+        'Lesson dates are not valid!'
+      );
+    } else {
+      console.log(this.createForm.value);
+    }
   }
 }

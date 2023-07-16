@@ -79,7 +79,10 @@
         required
       ></textarea>
     </div>
-    <div class="input-field full-length">
+    <div
+      class="input-field full-length"
+      *ngIf="createForm.controls.date.value != ''"
+    >
       <label for="schedule">Course Schedule</label>
 
       <ng-container
@@ -102,6 +105,7 @@
             placeholder="Lesson {{ i + 1 }} - Date"
             formControlName="lessonDate"
             [min]="createForm.controls.date.value"
+            [disabled]="createForm.controls.date.value != '' ? false : true"
             required
           />
         </ng-container>
@@ -115,6 +119,11 @@
           <span>Remove Last Lesson</span><i class="fa-solid fa-minus"></i>
         </button>
       </div>
+    </div>
+
+    <div class="important-text" *ngIf="createForm.controls.date.value == ''">
+      Schedule will be available after you select the starting date for the
+      course.
     </div>
 
     <div
