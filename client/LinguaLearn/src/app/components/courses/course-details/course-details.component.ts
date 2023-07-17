@@ -3,8 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-course-details',
   templateUrl: './course-details.component.html',
-  styleUrls: ['./course-details.component.css']
+  styleUrls: ['./course-details.component.css'],
 })
 export class CourseDetailsComponent {
+  infoShown: boolean = false;
 
+  toggleInfo() {
+    this.infoShown = !this.infoShown;
+  }
 }

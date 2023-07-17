@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { arePasswordsMatching } from './validators/passwords.validator';
 
 @Component({
   selector: 'app-register',
@@ -25,58 +20,24 @@ export class RegisterComponent {
       ]),
       username: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^[A-Za-z0-9]{5,}$/),
+        Validators.minLength(5),
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^[A-Za-z0-9]{8,16}$/),
+        Validators.minLength(8),
+        Validators.maxLength(16),
       ]),
-      repass: new FormControl('', [
-        Validators.required,
-        Validators.pattern(/^[A-Za-z0-9]{8,16}$/),
-      ]),
-      firstName: new FormControl('', [
-        Validators.required,
-        Validators.pattern(/^[A-Za-z0-9]{1,}$/),
-      ]),
-      lastName: new FormControl('', [
-        Validators.required,
-        Validators.pattern(/^[A-Za-z0-9]{1,}$/),
-      ]),
+      repass: new FormControl('', [Validators.required]),
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
       image: new FormControl('', [
         Validators.required,
         Validators.pattern(/^https?:\/\/.+$/),
       ]),
       role: new FormControl('', [Validators.required]),
     },
-    this.arePasswordsMatching()
+    arePasswordsMatching()
   );
-
-  arePasswordsMatching(): ValidatorFn {
-    return (formGroup: AbstractControl): { [key: string]: any } | null => {
-      const passwordControl = formGroup.get('password');
-      const confirmPasswordControl = formGroup.get('repass');
-
-      if (!passwordControl || !confirmPasswordControl) {
-        return null;
-      }
-
-      if (
-        confirmPasswordControl.errors &&
-        !confirmPasswordControl.errors['passwordMismatch']
-      ) {
-        return null;
-      }
-
-      if (passwordControl.value !== confirmPasswordControl.value) {
-        confirmPasswordControl.setErrors({ passwordMismatch: true });
-        return { passwordMismatch: true };
-      } else {
-        confirmPasswordControl.setErrors(null);
-        return null;
-      }
-    };
-  }
 
   onSubmit() {
     if (this.authService.isLoggedIn()) {

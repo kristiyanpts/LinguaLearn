@@ -25,6 +25,59 @@
         required
       />
     </div>
+
+    <div
+      class="form-errors full-length"
+      *ngIf="loginForm.touched && loginForm.invalid"
+    >
+      <div class="title">Form Invalid</div>
+
+      <!-- Email Validations -->
+      <ng-container *ngIf="loginForm.controls.email.touched">
+        <div
+          class="form-error"
+          *ngIf="loginForm.controls.email.errors?.['required']"
+        >
+          <span>Email is required.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="loginForm.controls.email.errors?.['pattern']"
+        >
+          <span>Email format is not valid.</span>
+        </div>
+      </ng-container>
+
+      <!-- Password Validations -->
+      <ng-container *ngIf="loginForm.controls.password.touched">
+        <div
+          class="form-error"
+          *ngIf="loginForm.controls.password.errors?.['required']"
+        >
+          <span>Password is required.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="loginForm.controls.password.errors?.['minlength']"
+        >
+          <span>Password must be at least 8 characters long.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="loginForm.controls.password.errors?.['maxlength']"
+        >
+          <span>Password must be at max 16 characters long.</span>
+        </div>
+      </ng-container>
+
+      <!-- All data validation -->
+      <ng-container *ngIf="loginForm.touched">
+        <div class="form-error" *ngIf="loginForm.invalid">
+          <span>Not all data is filled in or not all data is correct.</span>
+        </div>
+      </ng-container>
+    </div>
+
     <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
     <div class="reffer">
       Haven't created an account yet?

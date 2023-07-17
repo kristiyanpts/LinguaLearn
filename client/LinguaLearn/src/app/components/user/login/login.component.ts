@@ -19,7 +19,8 @@ export class LoginComponent {
     ]),
     password: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^[A-Za-z0-9]{8,16}$/),
+      Validators.minLength(8),
+      Validators.maxLength(16),
     ]),
   });
 

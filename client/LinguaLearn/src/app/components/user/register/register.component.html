@@ -92,6 +92,137 @@
         <option value="teacher">Teacher</option>
       </select>
     </div>
+
+    <div
+      class="form-errors full-length"
+      *ngIf="registerForm.touched && registerForm.invalid"
+    >
+      <div class="title">Form Invalid</div>
+
+      <!-- Email Validations -->
+      <ng-container *ngIf="registerForm.controls.email.touched">
+        <div
+          class="form-error"
+          *ngIf="registerForm.controls.email.errors?.['required']"
+        >
+          <span>Email is required.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="registerForm.controls.email.errors?.['pattern']"
+        >
+          <span>Email format is not valid.</span>
+        </div>
+      </ng-container>
+
+      <!-- Username Validations -->
+      <ng-container *ngIf="registerForm.controls.username.touched">
+        <div
+          class="form-error"
+          *ngIf="registerForm.controls.username.errors?.['required']"
+        >
+          <span>Username is required.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="registerForm.controls.username.errors?.['minlength']"
+        >
+          <span>Username must be at least 5 characters long.</span>
+        </div>
+      </ng-container>
+
+      <!-- Password Validations -->
+      <ng-container *ngIf="registerForm.controls.password.touched">
+        <div
+          class="form-error"
+          *ngIf="registerForm.controls.password.errors?.['required']"
+        >
+          <span>Password is required.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="registerForm.controls.password.errors?.['minlength']"
+        >
+          <span>Password must be at least 8 characters long.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="registerForm.controls.password.errors?.['maxlength']"
+        >
+          <span>Password must be at max 16 characters long.</span>
+        </div>
+      </ng-container>
+
+      <!-- Repeat Password Validations -->
+      <ng-container *ngIf="registerForm.controls.repass.touched">
+        <div
+          class="form-error"
+          *ngIf="registerForm.controls.repass.errors?.['required']"
+        >
+          <span>Confirm password is required.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="registerForm.controls.repass.errors?.['passwordMismatch']"
+        >
+          <span>Passwords do not match.</span>
+        </div>
+      </ng-container>
+
+      <!-- First name Validations -->
+      <ng-container *ngIf="registerForm.controls.firstName.touched">
+        <div
+          class="form-error"
+          *ngIf="registerForm.controls.firstName.errors?.['required']"
+        >
+          <span>First name is required.</span>
+        </div>
+      </ng-container>
+
+      <!-- Last name Validations -->
+      <ng-container *ngIf="registerForm.controls.lastName.touched">
+        <div
+          class="form-error"
+          *ngIf="registerForm.controls.lastName.errors?.['required']"
+        >
+          <span>Last name is required.</span>
+        </div>
+      </ng-container>
+
+      <!-- Image Validations -->
+      <ng-container *ngIf="registerForm.controls.image.touched">
+        <div
+          class="form-error"
+          *ngIf="registerForm.controls.image.errors?.['required']"
+        >
+          <span>Image is required.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="registerForm.controls.image.errors?.['pattern']"
+        >
+          <span>Image URL is not valid.</span>
+        </div>
+      </ng-container>
+
+      <!-- Role Validations -->
+      <ng-container *ngIf="registerForm.controls.role.touched">
+        <div
+          class="form-error"
+          *ngIf="registerForm.controls.role.errors?.['required']"
+        >
+          <span>Role is required.</span>
+        </div>
+      </ng-container>
+
+      <!-- All data validation -->
+      <ng-container *ngIf="registerForm.touched">
+        <div class="form-error" *ngIf="registerForm.invalid">
+          <span>Not all data is filled in or not all data is correct.</span>
+        </div>
+      </ng-container>
+    </div>
+
     <button type="submit" [disabled]="registerForm.invalid">Register</button>
     <div class="important-message">
       Before registering double check your selected role. They have the
