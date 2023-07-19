@@ -61,3 +61,18 @@ body {
   text-transform: uppercase;
   font-weight: 700;
 }
+
+.no-courses {
+  position: relative;
+  width: fit-content;
+  padding: 20px;
+  background-color: #6291de;
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 10px;
+}

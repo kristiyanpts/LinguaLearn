@@ -44,6 +44,12 @@ header img {
   border: 1px solid #6291de;
 }
 
+.active-link {
+  background-color: white !important;
+  color: #6291de !important;
+  border: 1px solid #6291de !important;
+}
+
 .menu-icon {
   position: relative;
   width: fit-content;

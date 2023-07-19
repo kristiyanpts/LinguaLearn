@@ -1,4 +1,4 @@
-const { userModel, tokenBlacklistModel } = require("../models");
+const { userModel } = require("../models");
 
 const utils = require("../utils");
 const { authCookieName } = require("../app-config");
@@ -74,8 +74,6 @@ function register(req, res, next) {
 
 function login(req, res, next) {
   const { email, password } = req.body;
-
-  console.log(req.body);
 
   userModel
     .findOne({ email })

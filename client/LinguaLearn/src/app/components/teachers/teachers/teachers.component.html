@@ -10,7 +10,7 @@
         and you want to join our team and make peoples dream come true, click
         the button below!
       </div>
-      <a href="">Start Teaching</a>
+      <a routerLink="/user/register" *ngIf="!isLoggedIn">Start Teaching</a>
     </div>
   </div>
   <div class="teachers">

@@ -69,7 +69,6 @@ function createCourse(req, res, next) {
     teacher: userId,
   } = req.body;
 
-  console.log(userId);
   newCourse(
     name,
     image,
@@ -81,7 +80,9 @@ function createCourse(req, res, next) {
     schedule,
     userId
   )
-    .then(([_]) => res.status(200))
+    .then(([_]) =>
+      res.status(200).json({ message: "Created course successfully" })
+    )
     .catch(next);
 }
 

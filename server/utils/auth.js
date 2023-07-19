@@ -1,14 +1,12 @@
 const jwt = require("./jwt");
 const { authCookieName } = require("../app-config");
-const { userModel, tokenBlacklistModel } = require("../models");
+const { userModel } = require("../models");
 
 function auth(redirectUnauthenticated = true) {
   return function (req, res, next) {
     const token = req.cookies[authCookieName] || "";
-    Promise.all([
-      jwt.verifyToken(token),
-      tokenBlacklistModel.findOne({ token }),
-    ])
+    console.log(req.cookies);
+    Promise.all([jwt.verifyToken(token)])
       .then(([data, blacklistedToken]) => {
         if (blacklistedToken) {
           return Promise.reject(new Error("blacklisted token"));

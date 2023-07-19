@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserRoutingModule } from './user-routing.module';
 import { CoursesModule } from '../courses/courses.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent, ProfileComponent],
@@ -14,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserRoutingModule,
     CoursesModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
 })
 export class UserModule {}

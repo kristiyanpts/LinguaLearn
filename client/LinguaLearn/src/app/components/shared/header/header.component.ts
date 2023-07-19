@@ -20,15 +20,26 @@ export class HeaderComponent {
     return this.isMenuShown ? 'open' : '';
   }
 
+  get username() {
+    return sessionStorage.getItem('username');
+  }
+
+  get userId() {
+    return this.authService.getUserId();
+  }
+
+  get isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
   logout(): void {
-    if (this.authService.isLoggedIn()) {
+    if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/user/login']);
     } else {
-      this.authService
-        .logout()
-        .subscribe
-        //todo: remove any session storage
-        ();
+      this.authService.logout().subscribe((data) => {
+        sessionStorage.clear();
+        this.router.navigate(['/']);
+      });
     }
   }
 }

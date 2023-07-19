@@ -11,6 +11,7 @@ import { CoursesModule } from './components/courses/courses.module';
 import { LandingModule } from './components/landing/landing.module';
 import { TeachersModule } from './components/teachers/teachers.module';
 import { UserModule } from './components/user/user.module';
+import { authInterceptorProvider } from './core/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +31,7 @@ import { UserModule } from './components/user/user.module';
     UserModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [authInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

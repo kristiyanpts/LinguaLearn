@@ -33,10 +33,13 @@ const routes: Routes = [
     title: 'Teachers | LinguaLearn',
   },
   {
-    path: '**',
-    pathMatch: 'full',
+    path: 'not-found',
     component: NotFoundComponent,
-    title: '404 | LinguaLearn',
+    title: 'Not Found | LinguaLearn',
+  },
+  {
+    path: '**',
+    redirectTo: '/not-found',
   },
 ];
 

@@ -1,0 +1,19 @@
+<div class="course">
+  <img src="{{ courseData?.image }}" alt="{{ courseData?.name }}" />
+  <div class="course-info">
+    <div class="name">{{ courseData?.name }}</div>
+    <div class="period">
+      <div class="start">
+        <i class="fa-solid fa-circle-play"></i> {{ courseData?.date }}
+      </div>
+      <div class="duration">
+        <i class="fa-solid fa-clock"></i> {{ courseData?.duration }}
+      </div>
+    </div>
+    <div>
+      <i class="fa-solid fa-tag"></i> Difficulty:
+      {{ courseData?.level | titlecase }} Level
+    </div>
+    <a routerLink="/courses/{{ courseData?._id }}">View More</a>
+  </div>
+</div>

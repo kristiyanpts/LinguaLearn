@@ -1,5 +1,10 @@
 <section class="auth-page">
-  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form
+    class="login-form"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    *ngIf="!isLoggingIn"
+  >
     <div class="auth-title">Sign In</div>
     <div class="input-field">
       <label for="password">Email:</label>
@@ -84,4 +89,6 @@
       <a routerLink="/user/register">Register</a>
     </div>
   </form>
+
+  <app-loader [title]="'Loggin In'" *ngIf="isLoggingIn" />
 </section>

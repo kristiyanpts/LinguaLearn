@@ -7,7 +7,7 @@
         Register to start!
       </div>
       <div class="controls">
-        <a routerLink="/user/register">Register</a>
+        <a routerLink="/user/register" *ngIf="!isLoggedIn">Register</a>
         <a routerLink="/courses">Available Courses</a>
       </div>
     </div>

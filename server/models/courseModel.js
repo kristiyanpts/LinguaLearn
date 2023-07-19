@@ -48,7 +48,8 @@ const courseSchema = new mongoose.Schema({
   },
   schedule: [
     {
-      type: String,
+      lessonName: { type: String },
+      lessonDate: { type: String },
     },
   ],
   teacher: {

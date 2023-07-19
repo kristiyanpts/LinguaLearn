@@ -11,6 +11,7 @@ import { arePasswordsMatching } from './validators/passwords.validator';
 })
 export class RegisterComponent {
   constructor(private authService: AuthService, private router: Router) {}
+  isRegistering: boolean = false;
 
   registerForm = new FormGroup(
     {
@@ -43,8 +44,15 @@ export class RegisterComponent {
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/']);
     } else {
-      console.log(this.registerForm.value);
-      this.authService.register(this.registerForm.value).subscribe();
+      this.isRegistering = true;
+      this.authService.register(this.registerForm.value).subscribe({
+        next: () => {
+          this.isRegistering = false;
+        },
+        error: (err) => {
+          this.isRegistering = false;
+        },
+      });
     }
   }
 }

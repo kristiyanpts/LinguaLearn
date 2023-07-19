@@ -1,5 +1,10 @@
 <section class="create-page">
-  <form class="create-form" [formGroup]="createForm" (ngSubmit)="onSubmit()">
+  <form
+    class="create-form"
+    [formGroup]="createForm"
+    (ngSubmit)="onSubmit()"
+    *ngIf="!isCreatingCourse"
+  >
     <div class="create-title">Create Course</div>
 
     <div class="input-field">
@@ -86,8 +91,8 @@
       <label for="schedule">Course Schedule</label>
 
       <ng-container
-        formArrayName="courses"
-        *ngFor="let course of courses.controls; index as i"
+        formArrayName="schedule"
+        *ngFor="let course of schedule.controls; index as i"
       >
         <ng-container [formGroupName]="i">
           <input
@@ -239,8 +244,8 @@
       </ng-container>
 
       <!-- Lessons Validation -->
-      <ng-container *ngIf="createForm.controls.courses.invalid">
-        <div class="form-error" *ngIf="createForm.controls.courses.invalid">
+      <ng-container *ngIf="createForm.controls.schedule.invalid">
+        <div class="form-error" *ngIf="createForm.controls.schedule.invalid">
           <span>Not all lesson data is filled in.</span>
         </div>
       </ng-container>
@@ -255,4 +260,6 @@
 
     <button type="submit" [disabled]="createForm.invalid">Create Course</button>
   </form>
+
+  <app-loader [title]="'Creating course'" *ngIf="isCreatingCourse" />
 </section>

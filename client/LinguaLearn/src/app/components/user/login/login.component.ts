@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
+  isLoggingIn: boolean = false;
 
   loginForm = new FormGroup({
     email: new FormControl('', [
@@ -28,7 +29,16 @@ export class LoginComponent {
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/']);
     } else {
-      this.authService.login(this.loginForm.value).subscribe();
+      this.isLoggingIn = true;
+      this.authService.login(this.loginForm.value).subscribe({
+        next: () => {
+          this.isLoggingIn = false;
+        },
+        error: (err) => {
+          console.log(err);
+          this.isLoggingIn = false;
+        },
+      });
     }
   }
 }

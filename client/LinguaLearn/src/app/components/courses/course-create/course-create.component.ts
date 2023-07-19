@@ -3,6 +3,9 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LessonModel } from 'src/app/core/models/lessonModel';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { checkDates } from './validators/date.validator';
+import { CourseService } from 'src/app/core/services/course.service';
+import { Course } from 'src/app/core/models/courseModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course-create',
@@ -10,6 +13,8 @@ import { checkDates } from './validators/date.validator';
   styleUrls: ['./course-create.component.css'],
 })
 export class CourseCreateComponent {
+  isCreatingCourse: boolean = false;
+  newCourse: Course | undefined;
   courseLessonsModel = {
     lessonName: new FormControl('', [Validators.required]),
     lessonDate: new FormControl('', [Validators.required]),
@@ -34,15 +39,15 @@ export class CourseCreateComponent {
       Validators.minLength(10),
       Validators.maxLength(200),
     ]),
-    courses: new FormArray([new FormGroup(this.courseLessonsModel)]),
+    schedule: new FormArray([new FormGroup(this.courseLessonsModel)]),
   });
 
-  get courses(): FormArray {
-    return this.createForm.get('courses') as FormArray;
+  get schedule(): FormArray {
+    return this.createForm.get('schedule') as FormArray;
   }
 
   addLesson(): void {
-    let currentLength: number = this.createForm.controls.courses.length;
+    let currentLength: number = this.createForm.controls.schedule.length;
 
     if (currentLength == 20) {
       this.notificationService.showNotification(
@@ -51,7 +56,7 @@ export class CourseCreateComponent {
         'Course must have max 20 lessons'
       );
     } else {
-      this.createForm.controls.courses.push(
+      this.createForm.controls.schedule.push(
         new FormGroup({
           lessonName: new FormControl('', [Validators.required]),
           lessonDate: new FormControl('', [Validators.required]),
@@ -61,7 +66,7 @@ export class CourseCreateComponent {
   }
 
   removeLesson(): void {
-    let currentLength: number = this.createForm.controls.courses.length;
+    let currentLength: number = this.createForm.controls.schedule.length;
 
     if (currentLength == 1) {
       this.notificationService.showNotification(
@@ -70,18 +75,22 @@ export class CourseCreateComponent {
         'Course must have at least 1 lesson'
       );
     } else {
-      this.createForm.controls.courses.removeAt(
-        this.createForm.controls.courses.length - 1
+      this.createForm.controls.schedule.removeAt(
+        this.createForm.controls.schedule.length - 1
       );
     }
   }
 
-  constructor(private notificationService: NotificationService) {}
+  constructor(
+    private notificationService: NotificationService,
+    private courseService: CourseService,
+    private router: Router
+  ) {}
 
   onSubmit() {
     let courseDate: string = this.createForm.get('date')?.value || '';
     let lessonDates: LessonModel[] =
-      (this.createForm.get('courses')?.value as LessonModel[]) || [];
+      (this.createForm.get('schedule')?.value as LessonModel[]) || [];
 
     if (checkDates(courseDate, lessonDates) == false) {
       this.notificationService.showNotification(
@@ -90,7 +99,39 @@ export class CourseCreateComponent {
         'Lesson dates are not valid!'
       );
     } else {
-      console.log(this.createForm.value);
+      this.isCreatingCourse = true;
+      this.newCourse = {
+        name: this.createForm.get('name')?.value || '',
+        image: this.createForm.get('image')?.value || '',
+        level: this.createForm.get('level')?.value || '',
+        capacity: Number(this.createForm.get('capacity')?.value) || 0,
+        date: courseDate,
+        duration: this.createForm.get('duration')?.value || '',
+        description: this.createForm.get('description')?.value || '',
+        schedule: lessonDates,
+        teacher: sessionStorage.getItem('id') || '',
+        students: [],
+      };
+
+      this.courseService.create(this.newCourse).subscribe({
+        next: () => {
+          this.isCreatingCourse = false;
+          this.router.navigate(['/courses']);
+          this.notificationService.showNotification(
+            'success',
+            'Success',
+            'Course created successfully!'
+          );
+        },
+        error: (err) => {
+          this.isCreatingCourse = false;
+          this.notificationService.showNotification(
+            'error',
+            'Error',
+            err.error.message
+          );
+        },
+      });
     }
   }
 }

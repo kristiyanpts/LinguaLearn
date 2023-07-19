@@ -14,20 +14,32 @@ export class AuthService {
   private registerUrl: string = `${API_URL}/register`;
 
   isLoggedIn(): boolean {
-    return false; //TODO: Change the hardcoded value
+    return sessionStorage.getItem('id') != undefined;
+  }
+
+  getUserId(): string | null {
+    return sessionStorage.getItem('id');
   }
 
   login(loginData: Object): Observable<Object> {
-    return this.http.post<Object>(this.loginUrl, loginData);
+    return this.http.post<Object>(this.loginUrl, loginData, {
+      withCredentials: true,
+    });
   }
 
   register(registerData: Object): Observable<Object> {
-    console.log(registerData, this.registerUrl);
-
-    return this.http.post<Object>(this.registerUrl, registerData);
+    return this.http.post<Object>(this.registerUrl, registerData, {
+      withCredentials: true,
+    });
   }
 
   logout(): Observable<Object> {
-    return this.http.post<Object>(this.logoutUrl, {});
+    return this.http.post<Object>(
+      this.logoutUrl,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
   }
 }
