@@ -1,83 +1,75 @@
 <section class="details-page">
-  <div class="course-item">
+  <div class="course-item" *ngIf="!isInfoLoading">
     <div class="main-info">
       <div class="left-side">
-        <img
-          src="https://i0.wp.com/whizsmart.com/wp-content/uploads/2020/09/Spanish.jpg?fit=610%2C432&ssl=1"
-          alt=""
-        />
+        <img src="{{ course?.image }}" alt="{{ course?.name }}" />
       </div>
       <div class="right-side">
-        <div class="name">Spanish Course</div>
+        <div class="name">{{ course?.name }}</div>
         <div class="desc-item">
           <div class="title">Teacher:</div>
-          <div class="value"><a href="">Kristiyan Petsanov</a></div>
+          <div class="value">
+            <a routerLink="/user/{{ teacherInfo.id }}">{{
+              teacherInfo.name
+            }}</a>
+          </div>
         </div>
         <div class="desc-item">
           <div class="title">Difficulty:</div>
-          <div class="value">Mid Level</div>
+          <div class="value">{{ course?.level | titlecase }} Level</div>
         </div>
         <div class="desc-item">
           <div class="title">Course Size:</div>
-          <div class="value">25</div>
+          <div class="value">{{ course?.capacity }}</div>
         </div>
         <div class="desc-item">
           <div class="title">Spots:</div>
-          <div class="value">14</div>
+          <div class="value">
+            {{ spotsLeft }}
+          </div>
         </div>
         <div class="desc-item">
           <div class="title">Start Date:</div>
-          <div class="value">25/02/2023</div>
+          <div class="value">{{ course?.date }}</div>
         </div>
         <div class="desc-item">
           <div class="title">Duration:</div>
-          <div class="value">6 months</div>
+          <div class="value">{{ course?.duration }}</div>
         </div>
       </div>
     </div>
     <div class="aditional-info">
       <div class="desc-item">
         <div class="title">Description</div>
-        <div class="value">
-          Mnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kajaMnogo interesen kurs ko da ti
-          kajaMnogo interesen kurs ko da ti kaja
-        </div>
+        <div class="value">{{ course?.description }}</div>
       </div>
       <div class="desc-item">
         <div class="title">Schedule</div>
         <div class="schedules">
-          <div class="schedule" (click)="toggleInfo()">
-            <div class="name">1. Course Introduction</div>
-            <div class="date" [hidden]="!infoShown">
-              <i class="fa-solid fa-calendar-days"></i> 2023-12-20
+          <ng-container *ngFor="let lesson of course?.schedule; let i = index">
+            <div class="schedule">
+              <div class="name">{{ i + 1 }}. {{ lesson.lessonName }}</div>
+              <div class="date">
+                <i class="fa-solid fa-calendar-days"></i>
+                {{ lesson.lessonDate }}
+              </div>
             </div>
-            <i
-              class="fa-solid fa-angles-down action-arrow"
-              [ngClass]="{ rotated: infoShown }"
-            ></i>
-          </div>
+          </ng-container>
         </div>
       </div>
     </div>
-    <div class="controls">
-      <a href="">Edit</a>
-      <a href="">Delete</a>
-      <!-- <a href="">Sign Up</a> -->
-      <!-- <span>You have already signed up for this course!</span> -->
+    <div class="controls" *ngIf="canManageCourse || canSignUpForCourse">
+      <ng-container *ngIf="canManageCourse">
+        <a routerLink="/courses/{{ course?._id }}/edit">Edit</a>
+        <a (click)="deleteCourse()">Delete</a>
+      </ng-container>
+
+      <a (click)="signUpForCourse()" *ngIf="canSignUpForCourse">Sign Up</a>
+      <span *ngIf="!canSignUpForCourse && !canManageCourse"
+        >You have already signed up for this course!</span
+      >
     </div>
   </div>
+
+  <app-loader [title]="'Loading details'" *ngIf="isInfoLoading" />
 </section>

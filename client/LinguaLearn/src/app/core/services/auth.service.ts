@@ -17,6 +17,10 @@ export class AuthService {
     return sessionStorage.getItem('id') != undefined;
   }
 
+  isTeacher(): boolean {
+    return sessionStorage.getItem('role') == 'teacher';
+  }
+
   getUserId(): string | null {
     return sessionStorage.getItem('id');
   }

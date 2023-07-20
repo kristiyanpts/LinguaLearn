@@ -5,6 +5,7 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
 import { CourseCreateComponent } from './course-create/course-create.component';
 import { CourseEditComponent } from './course-edit/course-edit.component';
 import { AuthGuard } from 'src/app/core/guards/auth.gurad';
+import { RoleGuard } from 'src/app/core/guards/role.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: CoursesComponent },
@@ -12,7 +13,7 @@ const routes: Routes = [
     path: 'create',
     component: CourseCreateComponent,
     title: 'Create Course | LinguaLearn',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
   },
   {
     path: ':courseId',
@@ -23,7 +24,7 @@ const routes: Routes = [
     path: ':courseId/edit',
     component: CourseEditComponent,
     title: 'Edit Course | LinguaLearn',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
   },
 ];
 

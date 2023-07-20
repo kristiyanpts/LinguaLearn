@@ -38,6 +38,7 @@ function getLatestsCourses(req, res, next) {
 
   courseModel
     .find()
+    .sort({ _id: -1 })
     .limit(limit)
     .populate("teacher")
     .then((courses) => {
@@ -52,7 +53,10 @@ function getCourseById(req, res, next) {
   courseModel
     .findById(courseId)
     .populate("teacher students")
-    .then((course) => res.json(course))
+    .then((course) => {
+      if (course == null) throw new Error("Course not found!");
+      res.status(200).json(course);
+    })
     .catch(next);
 }
 
@@ -144,7 +148,7 @@ function courseSignUp(req, res, next) {
   courseModel
     .updateOne(
       { _id: courseId },
-      { $addToSet: { students: userId }, capacity: { $inc: -1 } },
+      { $addToSet: { students: userId } },
       { new: true }
     )
     .then(() =>

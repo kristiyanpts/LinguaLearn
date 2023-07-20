@@ -35,14 +35,24 @@ export class CourseService {
   }
 
   edit(course: Course) {
-    return this.http.put<Course>(`${this.courseUrl}/${course._id}`, course);
+    return this.http.put<Course>(`${this.courseUrl}/${course._id}`, course, {
+      withCredentials: true,
+    });
   }
 
   delete(id: string) {
-    return this.http.delete<Course>(`${this.courseUrl}/${id}`);
+    return this.http.delete<Course>(`${this.courseUrl}/${id}`, {
+      withCredentials: true,
+    });
   }
 
   signUp(courseId: string) {
-    return this.http.put<Course>(`${this.courseUrl}/${courseId}/sign-up`, {});
+    return this.http.put<Course>(
+      `${this.courseUrl}/${courseId}/sign-up`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
   }
 }

@@ -1,4 +1,5 @@
 import { LessonModel } from './lessonModel';
+import { User } from './userModel';
 
 export interface Course {
   _id?: string;
@@ -10,6 +11,6 @@ export interface Course {
   duration: string;
   description: string;
   schedule: LessonModel[];
-  teacher: string;
+  teacher: User | string;
   students: string[];
 }

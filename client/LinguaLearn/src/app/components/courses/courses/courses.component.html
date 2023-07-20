@@ -6,12 +6,18 @@
 
   <div class="title">Latest Courses</div>
   <div class="filters" *ngIf="showHeader && courses.length > 0">
-    <form class="filter-search">
+    <form
+      class="filter-search"
+      #searchForm="ngForm"
+      (ngSubmit)="searchCourse(searchForm)"
+    >
       <input
         type="text"
         name="search"
         id="search"
         placeholder="Search by name"
+        ngModel
+        required
       />
       <button type="submit">
         <i class="fa-solid fa-paper-plane"></i>
@@ -19,11 +25,36 @@
     </form>
     <div class="separator">OR</div>
     <div class="level-filters">
-      <button>All Courses</button>
-      <button>Entry Level</button>
-      <button>Mid Level</button>
-      <button>Advanced Level</button>
-      <button>Expert Level</button>
+      <button
+        (click)="sortCourses('all')"
+        [ngClass]="{ 'active-filter': selectedFilter == 'all' }"
+      >
+        All Courses
+      </button>
+      <button
+        (click)="sortCourses('entry')"
+        [ngClass]="{ 'active-filter': selectedFilter == 'entry' }"
+      >
+        Entry Level
+      </button>
+      <button
+        (click)="sortCourses('mid')"
+        [ngClass]="{ 'active-filter': selectedFilter == 'mid' }"
+      >
+        Mid Level
+      </button>
+      <button
+        (click)="sortCourses('advanced')"
+        [ngClass]="{ 'active-filter': selectedFilter == 'advanced' }"
+      >
+        Advanced Level
+      </button>
+      <button
+        (click)="sortCourses('expert')"
+        [ngClass]="{ 'active-filter': selectedFilter == 'expert' }"
+      >
+        Expert Level
+      </button>
     </div>
   </div>
   <div class="course-items" *ngIf="courses.length > 0">
