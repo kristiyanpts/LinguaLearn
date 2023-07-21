@@ -104,6 +104,8 @@ function editCourse(req, res, next) {
   } = req.body;
   const { _id: userId } = req.user;
 
+  console.log(courseId, req.params, userId);
+
   courseModel
     .findOneAndUpdate(
       { _id: courseId, teacher: userId },
@@ -141,9 +143,14 @@ function deleteCourse(req, res, next) {
     .catch(next);
 }
 
-function courseSignUp(req, res, next) {
+async function courseSignUp(req, res, next) {
   const { courseId } = req.params;
   const { _id: userId } = req.user;
+
+  let course = await courseModel.findById(courseId);
+  if (course.capacity == course.students.length) {
+    return res.status(401).json({ message: "There are no spots left!" });
+  }
 
   courseModel
     .updateOne(

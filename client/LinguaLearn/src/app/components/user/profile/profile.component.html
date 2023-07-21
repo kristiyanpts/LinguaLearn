@@ -1,32 +1,38 @@
 <section class="profile-page">
-  <div class="profile">
-    <div class="left-side">
-      <img
-        src="https://i.guim.co.uk/img/media/bc12099e16c5e0a7ed7b1e63687dac6dd71ff13b/305_331_2800_1680/master/2800.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=3d0d6772b03019da00428fe5537404b5"
-        alt="Profile Picture"
-      />
-      <span class="username">Kris</span>
+  <ng-container *ngIf="!isDataLoading">
+    <div class="profile">
+      <div class="left-side">
+        <img src="{{ user?.image }}" alt="Profile Picture" />
+        <span class="username">{{ user?.username }}</span>
+      </div>
+      <div class="right-side">
+        <div class="title">Profile Information</div>
+        <div class="info-block">
+          <span>Email</span>
+          <span>{{ user?.email }}</span>
+        </div>
+        <div class="info-block">
+          <span>Full Name</span>
+          <span>{{ user?.firstName }} {{ user?.lastName }}</span>
+        </div>
+        <div class="info-block">
+          <span>Role</span>
+          <span>{{ user?.role | titlecase }}</span>
+        </div>
+        <div class="info-block">
+          <span>Courses Teaching</span>
+          <span>{{ user?.courses?.length }}</span>
+        </div>
+      </div>
     </div>
-    <div class="right-side">
-      <div class="title">Profile Information</div>
-      <div class="info-block">
-        <span>Email</span>
-        <span>kristiqn3456@gmail.com</span>
-      </div>
-      <div class="info-block">
-        <span>Full Name</span>
-        <span>Kristiyan Petsanov</span>
-      </div>
-      <div class="info-block">
-        <span>Role</span>
-        <span>Teacher</span>
-      </div>
-      <div class="info-block">
-        <span>Courses Teaching</span>
-        <span>2</span>
-      </div>
-    </div>
-  </div>
 
-  <app-courses [showHeader]="false" />
+    <app-courses
+      [showHeader]="false"
+      [isLimited]="false"
+      [userCourses]="user?.courses || []"
+      [title]="courseTitle"
+    />
+  </ng-container>
+
+  <app-loader [title]="'loading profile'" *ngIf="isDataLoading" />
 </section>

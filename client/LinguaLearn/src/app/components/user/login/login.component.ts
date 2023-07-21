@@ -35,7 +35,6 @@ export class LoginComponent {
           this.isLoggingIn = false;
         },
         error: (err) => {
-          console.log(err);
           this.isLoggingIn = false;
         },
       });

@@ -22,13 +22,27 @@
   <div class="separator">OR</div>
   <div class="find-us">
     <div class="title">Get in touch with us through this form</div>
-    <form class="contact-form">
-      <input type="text" name="name" id="name" placeholder="Your name" />
+    <form
+      class="contact-form"
+      #contactForm="ngForm"
+      (ngSubmit)="submitContact(contactForm)"
+    >
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Your name"
+        ngModel
+        required
+      />
       <input
         type="email"
         name="email"
         id="email"
         placeholder="Your email adress"
+        ngModel
+        required
+        [email]="true"
       />
       <textarea
         name="message"
@@ -36,8 +50,12 @@
         cols="30"
         rows="10"
         placeholder="Your message"
+        ngModel
+        required
       ></textarea>
-      <button type="submit">Send Message</button>
+      <button type="submit" [disabled]="contactForm.invalid">
+        Send Message
+      </button>
     </form>
   </div>
 </section>

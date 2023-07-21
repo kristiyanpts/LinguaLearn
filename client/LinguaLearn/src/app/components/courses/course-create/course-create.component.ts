@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LessonModel } from 'src/app/core/models/lessonModel';
 import { NotificationService } from 'src/app/core/services/notification.service';
-import { checkDates } from './validators/date.validator';
+import { checkDates } from '../../../core/validators/date.validator';
 import { CourseService } from 'src/app/core/services/course.service';
 import { Course } from 'src/app/core/models/courseModel';
 import { Router } from '@angular/router';
@@ -121,14 +121,6 @@ export class CourseCreateComponent {
             'success',
             'Success',
             'Course created successfully!'
-          );
-        },
-        error: (err) => {
-          this.isCreatingCourse = false;
-          this.notificationService.showNotification(
-            'error',
-            'Error',
-            err.error.message
           );
         },
       });

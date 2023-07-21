@@ -6,6 +6,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { CoursesModule } from '../courses/courses.module';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,12 @@ import { RouterModule } from '@angular/router';
     AboutComponent,
     ContactComponent,
   ],
-  imports: [CommonModule, CoursesModule, CoursesModule, RouterModule],
+  imports: [
+    CommonModule,
+    CoursesModule,
+    CoursesModule,
+    RouterModule,
+    FormsModule,
+  ],
 })
 export class LandingModule {}

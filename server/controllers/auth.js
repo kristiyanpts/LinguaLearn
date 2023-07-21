@@ -115,11 +115,21 @@ function logout(req, res) {
   res.clearCookie(authCookieName).status(204).send({ message: "Logged out!" });
 }
 
+function getTeachers(req, res, next) {
+  userModel
+    .find({ role: "teacher" })
+    .then((t) => {
+      res.status(200).json(t);
+    })
+    .catch(next);
+}
+
 function getProfileInfo(req, res, next) {
-  const { _id: userId } = req.user;
+  let { userId } = req.params;
 
   userModel
     .findOne({ _id: userId }, { password: 0, __v: 0 })
+    .populate("courses")
     .then((user) => {
       res.status(200).json(user);
     })
@@ -148,4 +158,5 @@ module.exports = {
   logout,
   getProfileInfo,
   editProfileInfo,
+  getTeachers,
 };

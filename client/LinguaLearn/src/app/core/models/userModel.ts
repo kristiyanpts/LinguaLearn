@@ -1,3 +1,5 @@
+import { Course } from './courseModel';
+
 export interface User {
   _id: string;
   email: string;
@@ -7,6 +9,6 @@ export interface User {
   lastName: string;
   image: string;
   role: string;
-  courses: string[];
+  courses: Course[];
   __v: number;
 }

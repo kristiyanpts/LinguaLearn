@@ -4,8 +4,8 @@
 >
   <app-courses-header style="width: 100%" *ngIf="showHeader" />
 
-  <div class="title">Latest Courses</div>
-  <div class="filters" *ngIf="showHeader && courses.length > 0">
+  <div class="title">{{ title }}</div>
+  <div class="filters" *ngIf="showHeader">
     <form
       class="filter-search"
       #searchForm="ngForm"

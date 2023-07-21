@@ -17,6 +17,7 @@ export class CourseDetailsComponent implements OnInit {
   course: Course | undefined;
   canManageCourse: boolean = false;
   canSignUpForCourse: boolean = false;
+  isUser: boolean = false;
 
   teacherInfo = { name: '', id: '' };
   spotsLeft: number = 0;
@@ -25,7 +26,8 @@ export class CourseDetailsComponent implements OnInit {
     private coursesService: CourseService,
     private notificationService: NotificationService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -33,14 +35,15 @@ export class CourseDetailsComponent implements OnInit {
     let courseId: string = this.route.snapshot.params['courseId'];
     this.coursesService.getById(courseId).subscribe({
       next: (course: Course) => {
-        console.log('vlizam?');
-
         this.isInfoLoading = false;
         let userId: string = sessionStorage.getItem('id') || '';
         this.course = course;
         this.canManageCourse = (course.teacher as User)._id == userId;
+
         this.canSignUpForCourse =
-          !this.canManageCourse && !course.students.includes(userId);
+          !this.canManageCourse &&
+          !course.students.find((s: any) => s._id == userId);
+        this.isUser = this.authService.isLoggedIn();
         this.teacherInfo.name =
           (course.teacher as User).firstName +
           ' ' +
@@ -69,16 +72,21 @@ export class CourseDetailsComponent implements OnInit {
           );
           this.router.navigate(['/courses']);
         },
-        error: (err) => {
-          this.notificationService.showNotification(
-            'error',
-            'Error',
-            err.error.message
-          );
-        },
       });
     }
   }
 
-  signUpForCourse() {}
+  signUpForCourse() {
+    let courseId: string = this.route.snapshot.params['courseId'];
+    this.coursesService.signUp(courseId).subscribe({
+      next: () => {
+        this.notificationService.showNotification(
+          'success',
+          'Success',
+          'You have successfully signed up for this course!'
+        );
+        this.ngOnInit();
+      },
+    });
+  }
 }

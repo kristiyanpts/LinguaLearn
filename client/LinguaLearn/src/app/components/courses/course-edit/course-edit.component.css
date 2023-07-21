@@ -145,3 +145,9 @@ input.ng-invalid.ng-touched {
 input.ng-valid.ng-touched {
   border: 1px solid greenyellow;
 }
+
+input:read-only {
+  cursor: not-allowed;
+  border-color: gray !important;
+  color: gray !important;
+}

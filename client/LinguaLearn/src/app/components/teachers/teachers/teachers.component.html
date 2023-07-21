@@ -16,22 +16,29 @@
   <div class="teachers">
     <div class="title">Our Teachers</div>
     <div class="filters">
-      <form class="filter-search">
+      <form
+        class="filter-search"
+        #searchForm="ngForm"
+        (ngSubmit)="searchTeacher(searchForm)"
+      >
         <input
           type="text"
           name="search"
           id="search"
           placeholder="Search by name"
+          ngModel
         />
         <button type="submit">
           <i class="fa-solid fa-paper-plane"></i>
         </button>
       </form>
     </div>
-    <div class="teacher-items">
-      <app-teacher-item />
+    <div class="teacher-items" *ngIf="teachers.length > 0">
+      <ng-container *ngFor="let teacher of teachers">
+        <app-teacher-item [teacherData]="teacher" />
+      </ng-container>
     </div>
-    <div class="no-teachers">
+    <div class="no-teachers" *ngIf="teachers.length == 0">
       There are currently no teachers registered. <br />
       Check back later!
     </div>

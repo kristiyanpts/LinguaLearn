@@ -12,6 +12,8 @@ import { NotificationService } from 'src/app/core/services/notification.service'
 export class CoursesComponent implements OnInit {
   @Input() showHeader: boolean = true;
   @Input() isLimited: boolean = false;
+  @Input() userCourses: Course[] = [];
+  @Input() title: string = 'Courses';
   areCoursesLoading: boolean = false;
   courses: Course[] = [];
   coursesUnchanged: Course[] = [];
@@ -23,6 +25,13 @@ export class CoursesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (this.userCourses.length > 0) {
+      this.courses = this.userCourses;
+      return;
+    }
+
+    console.log('hello?');
+
     this.areCoursesLoading = true;
     if (this.isLimited) {
       this.coursesService.getSixthLatest().subscribe({
@@ -33,11 +42,6 @@ export class CoursesComponent implements OnInit {
         },
         error: (error) => {
           this.areCoursesLoading = false;
-          this.notificationService.showNotification(
-            'error',
-            'Error',
-            error.error.message
-          );
         },
       });
     } else {
@@ -49,11 +53,6 @@ export class CoursesComponent implements OnInit {
         },
         error: (error) => {
           this.areCoursesLoading = false;
-          this.notificationService.showNotification(
-            'error',
-            'Error',
-            error.error.message
-          );
         },
       });
     }

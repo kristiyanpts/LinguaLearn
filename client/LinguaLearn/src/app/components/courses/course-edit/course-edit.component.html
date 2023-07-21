@@ -1,6 +1,11 @@
 <section class="create-page">
-  <form class="create-form" [formGroup]="courseForm" (ngSubmit)="onSubmit()">
-    <div class="create-title">Create Course</div>
+  <form
+    class="create-form"
+    [formGroup]="courseForm"
+    (ngSubmit)="onSubmit()"
+    *ngIf="!isDataLoading"
+  >
+    <div class="create-title">Edit Course</div>
 
     <div class="input-field">
       <label for="name">Course Name</label>
@@ -43,7 +48,7 @@
         min="1"
         placeholder="25"
         formControlName="capacity"
-        required
+        readonly="true"
       />
     </div>
     <div class="input-field">
@@ -86,8 +91,8 @@
       <label for="schedule">Course Schedule</label>
 
       <ng-container
-        formArrayName="courses"
-        *ngFor="let course of courses.controls; index as i"
+        formArrayName="schedule"
+        *ngFor="let course of courseForm.controls.schedule.controls; index as i"
       >
         <ng-container [formGroupName]="i">
           <input
@@ -105,7 +110,6 @@
             placeholder="Lesson {{ i + 1 }} - Date"
             formControlName="lessonDate"
             [min]="courseForm.controls.date.value"
-            [disabled]="courseForm.controls.date.value != '' ? false : true"
             required
           />
         </ng-container>
@@ -239,8 +243,8 @@
       </ng-container>
 
       <!-- Lessons Validation -->
-      <ng-container *ngIf="courseForm.controls.courses.invalid">
-        <div class="form-error" *ngIf="courseForm.controls.courses.invalid">
+      <ng-container *ngIf="courseForm.controls.schedule.invalid">
+        <div class="form-error" *ngIf="courseForm.controls.schedule.invalid">
           <span>Not all lesson data is filled in.</span>
         </div>
       </ng-container>
@@ -253,6 +257,8 @@
       </ng-container>
     </div>
 
-    <button type="submit" [disabled]="courseForm.invalid">Create Course</button>
+    <button type="submit" [disabled]="courseForm.invalid">Edit Course</button>
   </form>
+
+  <app-loader [title]="'loading data'" *ngIf="isDataLoading" />
 </section>
