@@ -57,6 +57,28 @@
           </ng-container>
         </div>
       </div>
+      <div class="desc-item" *ngIf="areThereStudents">
+        <div class="title">Students</div>
+        <div class="students">
+          <ng-container *ngFor="let student of course?.students">
+            <div class="student">
+              <span>{{ student.firstName }} {{ student.lastName }}</span>
+              <div class="user-controls">
+                <a
+                  class="user-control"
+                  *ngIf="canManageCourse"
+                  (click)="removeStudent(student._id)"
+                >
+                  <i class="fa-solid fa-trash"></i>
+                </a>
+                <a routerLink="/user/{{ student?._id }}" class="user-control">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
     </div>
     <div class="controls" *ngIf="isUser">
       <ng-container *ngIf="canManageCourse">

@@ -116,7 +116,8 @@
   font-size: 18px;
 }
 
-.aditional-info .desc-item .schedules {
+.aditional-info .desc-item .schedules,
+.students {
   position: relative;
   width: 100%;
   display: flex;
@@ -125,7 +126,8 @@
   gap: 5px;
 }
 
-.aditional-info .desc-item .schedule {
+.aditional-info .desc-item .schedule,
+.student {
   position: relative;
   width: 470px;
   border: 1px solid white;
@@ -133,9 +135,35 @@
   border-radius: 5px;
   font-size: 18px;
   display: flex;
-  gap: 10px;
-  cursor: pointer;
   justify-content: space-between;
+}
+
+.student {
+  text-decoration: none;
+  color: white;
+}
+
+.student:hover .user-controls {
+  display: flex;
+}
+
+.user-controls {
+  position: absolute;
+  width: fit-content;
+  right: 10px;
+  display: none;
+  gap: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.3s all ease;
+}
+
+.user-control {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 .rotated {

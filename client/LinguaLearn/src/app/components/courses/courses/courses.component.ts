@@ -10,10 +10,11 @@ import { NotificationService } from 'src/app/core/services/notification.service'
   styleUrls: ['./courses.component.css'],
 })
 export class CoursesComponent implements OnInit {
-  @Input() showHeader: boolean = true;
-  @Input() isLimited: boolean = false;
-  @Input() userCourses: Course[] = [];
-  @Input() title: string = 'Courses';
+  @Input() showHeader: boolean = true; // Show initial header (courses-header)
+  @Input() isLimited: boolean = false; // Limit amount of courses to 6
+  @Input() isUser: boolean = false; // Does the user send courses
+  @Input() userCourses: Course[] = []; // If isUser is true then these are the courses that should be shown
+  @Input() title: string = 'Courses'; // Title used above the courses
   areCoursesLoading: boolean = false;
   courses: Course[] = [];
   coursesUnchanged: Course[] = [];
@@ -25,12 +26,10 @@ export class CoursesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.userCourses.length > 0) {
+    if (this.userCourses && this.isUser == true) {
       this.courses = this.userCourses;
       return;
     }
-
-    console.log('hello?');
 
     this.areCoursesLoading = true;
     if (this.isLimited) {

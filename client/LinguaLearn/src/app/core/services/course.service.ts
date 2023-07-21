@@ -55,4 +55,12 @@ export class CourseService {
       }
     );
   }
+
+  removeStudent(courseId: string, userId: string) {
+    return this.http.put<Course>(
+      `${this.courseUrl}/${courseId}/remove-student`,
+      { userId },
+      { withCredentials: true }
+    );
+  }
 }

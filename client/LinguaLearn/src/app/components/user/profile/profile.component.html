@@ -19,7 +19,7 @@
           <span>Role</span>
           <span>{{ user?.role | titlecase }}</span>
         </div>
-        <div class="info-block">
+        <div class="info-block" *ngIf="user?.role == 'teacher'">
           <span>Courses Teaching</span>
           <span>{{ user?.courses?.length }}</span>
         </div>
@@ -29,8 +29,10 @@
     <app-courses
       [showHeader]="false"
       [isLimited]="false"
-      [userCourses]="user?.courses || []"
       [title]="courseTitle"
+      [isUser]="true"
+      [userCourses]="user?.courses || []"
+      *ngIf="user?.role == 'teacher'"
     />
   </ng-container>
 

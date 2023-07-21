@@ -21,6 +21,7 @@ export class CourseDetailsComponent implements OnInit {
 
   teacherInfo = { name: '', id: '' };
   spotsLeft: number = 0;
+  areThereStudents: boolean = false;
 
   constructor(
     private coursesService: CourseService,
@@ -50,6 +51,9 @@ export class CourseDetailsComponent implements OnInit {
           (course.teacher as User).lastName;
         this.teacherInfo.id = (course.teacher as User)._id;
         this.spotsLeft = course.capacity - course.students.length;
+        this.course.students.length > 0
+          ? (this.areThereStudents = true)
+          : (this.areThereStudents = false);
       },
       error: (err) => {
         this.isInfoLoading = false;
@@ -84,6 +88,20 @@ export class CourseDetailsComponent implements OnInit {
           'success',
           'Success',
           'You have successfully signed up for this course!'
+        );
+        this.ngOnInit();
+      },
+    });
+  }
+
+  removeStudent(userId: string) {
+    let courseId: string = this.route.snapshot.params['courseId'];
+    this.coursesService.removeStudent(courseId, userId).subscribe({
+      next: () => {
+        this.notificationService.showNotification(
+          'success',
+          'Success',
+          'Student removed successfully!'
         );
         this.ngOnInit();
       },
