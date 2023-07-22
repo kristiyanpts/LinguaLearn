@@ -1,0 +1,433 @@
+.admin-page {
+  position: relative;
+  width: 1400px;
+  height: 70%;
+  display: flex;
+  padding: 30px 50px 60px 50px;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.nav {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 91%;
+  width: 250px;
+  background-color: #6291de;
+  font-size: 20px;
+  border-radius: 5px;
+  color: white;
+  gap: 10px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.nav .title {
+  font-size: 30px;
+  font-weight: 700;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+}
+
+.nav a {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  padding: 10px 30px 10px 30px;
+  transition: 0.3s all ease;
+  align-items: center;
+}
+
+.nav a i {
+  width: 20%;
+}
+
+.nav a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.page {
+  position: relative;
+  height: 100%;
+  width: 1100px;
+  background-color: #6291de;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  gap: 20px;
+}
+
+.res-error {
+  position: relative;
+  padding: 50px;
+  border-radius: 5px;
+  background-color: #6291de;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  display: none;
+}
+
+/* Dashboard */
+
+.page .title {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.stats {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.stat {
+  position: relative;
+  width: 300px;
+  height: 150px;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.c {
+  width: 200px !important;
+}
+
+.stat .icon {
+  font-size: 60px;
+}
+
+.stat .value {
+  font-size: 40px;
+}
+
+.stat .name {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 95%;
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid white;
+}
+
+.separator:not(:empty)::before {
+  margin-right: 0.25em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: 0.25em;
+}
+
+/* Courses */
+
+.courses-admin {
+  width: 95%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.course-admin {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.course-admin .name {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.course-admin .teacher {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.course-admin .level {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.course-admin .capacity {
+  width: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.course-admin .date {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.course-admin .duration {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.course-admin .actions {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.course-admin .actions a {
+  position: relative;
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50px;
+  background-color: #6291de;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s all ease;
+}
+
+.course-admin .actions a:hover {
+  color: #6291de;
+  background-color: white;
+}
+
+.search-courses {
+  position: relative;
+  width: 95%;
+  height: 40px;
+}
+
+.search-courses input {
+  position: relative;
+  width: 99%;
+  height: 100%;
+  border: 1px solid white;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+/* Users */
+
+.users-admin {
+  width: 95%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.user-admin {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.user-admin .username {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.user-admin .email {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.user-admin .name {
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.user-admin .role {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.user-admin .actions {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.user-admin .actions a {
+  position: relative;
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50px;
+  background-color: #6291de;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s all ease;
+}
+
+.user-admin .actions a:hover {
+  color: #6291de;
+  background-color: white;
+}
+
+.search-users {
+  position: relative;
+  width: 95%;
+  height: 40px;
+}
+
+.search-users input {
+  position: relative;
+  width: 99%;
+  height: 100%;
+  border: 1px solid white;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 1500px) {
+  .admin-page {
+    width: 1200px;
+  }
+  .page {
+    width: 900px;
+  }
+  .stat {
+    width: 200px;
+  }
+  .c {
+    width: 150px !important;
+    text-align: center;
+  }
+  .course-admin .duration {
+    display: none;
+  }
+  .course-admin .date {
+    width: 15%;
+  }
+  .user-admin .username {
+    display: none;
+  }
+  .user-admin .email {
+    width: 30%;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .admin-page {
+    width: 1000px;
+  }
+  .page {
+    width: 700px;
+    overflow-y: scroll;
+  }
+  .stats {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .course-admin .date {
+    display: none;
+  }
+  .course-admin .teacher {
+    width: 25%;
+  }
+  .course-admin .level {
+    width: 15%;
+  }
+  .user-admin .role {
+    display: none;
+  }
+  .user-admin .name {
+    width: 18%;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .page {
+    display: none;
+  }
+  .nav {
+    display: none;
+  }
+  .res-error {
+    display: block;
+  }
+}
