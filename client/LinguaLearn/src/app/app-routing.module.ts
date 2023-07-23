@@ -5,6 +5,7 @@ import { AboutComponent } from './components/landing/about/about.component';
 import { ContactComponent } from './components/landing/contact/contact.component';
 import { NotFoundComponent } from './components/landing/not-found/not-found.component';
 import { TeachersComponent } from './components/teachers/teachers/teachers.component';
+import { AdminComponent } from './components/admin-panel/admin/admin.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -31,6 +32,13 @@ const routes: Routes = [
     path: 'teachers',
     component: TeachersComponent,
     title: 'Teachers | LinguaLearn',
+  },
+  {
+    path: 'admin-panel',
+    loadChildren: () =>
+      import('../app/components/admin-panel/admin-panel.module').then(
+        (c) => c.AdminPanelModule
+      ),
   },
   {
     path: 'not-found',

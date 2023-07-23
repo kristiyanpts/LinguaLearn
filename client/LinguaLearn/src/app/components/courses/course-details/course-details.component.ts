@@ -49,7 +49,7 @@ export class CourseDetailsComponent implements OnInit {
           (course.teacher as User).firstName +
           ' ' +
           (course.teacher as User).lastName;
-        this.teacherInfo.id = (course.teacher as User)._id;
+        this.teacherInfo.id = (course.teacher as User)._id || '';
         this.spotsLeft = course.capacity - course.students.length;
         this.course.students.length > 0
           ? (this.areThereStudents = true)

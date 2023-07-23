@@ -1,0 +1,51 @@
+.nav {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 98%;
+  width: 250px;
+  background-color: #6291de;
+  font-size: 20px;
+  border-radius: 5px;
+  color: white;
+  gap: 10px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.nav .title {
+  font-size: 30px;
+  font-weight: 700;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.nav a {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  padding: 10px 30px 10px 30px;
+  transition: 0.3s all ease;
+  align-items: center;
+}
+
+.nav a i {
+  width: 20%;
+}
+
+.nav a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.active-link {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+@media only screen and (max-width: 1050px) {
+  .nav {
+    display: none;
+  }
+}

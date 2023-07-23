@@ -6,6 +6,7 @@ import { checkDates } from '../../../core/validators/date.validator';
 import { CourseService } from 'src/app/core/services/course.service';
 import { Course } from 'src/app/core/models/courseModel';
 import { Router } from '@angular/router';
+import { User } from 'src/app/core/models/userModel';
 
 @Component({
   selector: 'app-course-create',
@@ -15,6 +16,7 @@ import { Router } from '@angular/router';
 export class CourseCreateComponent {
   isCreatingCourse: boolean = false;
   newCourse: Course | undefined;
+  newTeacher: User | undefined;
   courseLessonsModel = {
     lessonName: new FormControl('', [Validators.required]),
     lessonDate: new FormControl('', [Validators.required]),
@@ -100,6 +102,7 @@ export class CourseCreateComponent {
       );
     } else {
       this.isCreatingCourse = true;
+      this.newTeacher = { _id: sessionStorage.getItem('id') || '' };
       this.newCourse = {
         name: this.createForm.get('name')?.value || '',
         image: this.createForm.get('image')?.value || '',
@@ -109,7 +112,7 @@ export class CourseCreateComponent {
         duration: this.createForm.get('duration')?.value || '',
         description: this.createForm.get('description')?.value || '',
         schedule: lessonDates,
-        teacher: sessionStorage.getItem('id') || '',
+        teacher: this.newTeacher,
         students: [],
       };
 

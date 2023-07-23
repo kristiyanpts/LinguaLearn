@@ -12,6 +12,7 @@ import { LandingModule } from './components/landing/landing.module';
 import { TeachersModule } from './components/teachers/teachers.module';
 import { UserModule } from './components/user/user.module';
 import { authInterceptorProvider } from './core/interceptors/auth.interceptor';
+import { AdminPanelModule } from './components/admin-panel/admin-panel.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +31,7 @@ import { authInterceptorProvider } from './core/interceptors/auth.interceptor';
     TeachersModule,
     UserModule,
     HttpClientModule,
+    AdminPanelModule,
   ],
   providers: [authInterceptorProvider],
   bootstrap: [AppComponent],

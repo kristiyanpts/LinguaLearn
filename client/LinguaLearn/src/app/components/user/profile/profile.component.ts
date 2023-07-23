@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/core/models/userModel';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { UserService } from 'src/app/core/services/user.service';
 export class ProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
+    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -18,6 +20,9 @@ export class ProfileComponent implements OnInit {
   user: User | undefined;
   isDataLoading: boolean = false;
   courseTitle: string = 'Loading...';
+
+  displayCourses: boolean = false;
+  canEditProfile: boolean = false;
 
   ngOnInit(): void {
     this.isDataLoading = true;
@@ -27,6 +32,11 @@ export class ProfileComponent implements OnInit {
         this.isDataLoading = false;
         this.user = user;
         this.courseTitle = `${user.username}'s Courses`;
+        this.displayCourses =
+          user?.role == 'teacher' ||
+          user?.role == 'admin' ||
+          user?.role == 'owner';
+        this.canEditProfile = user._id == this.authService.getUserId();
       },
       error: () => {
         this.isDataLoading = false;

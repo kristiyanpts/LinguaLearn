@@ -19,9 +19,12 @@
           <span>Role</span>
           <span>{{ user?.role | titlecase }}</span>
         </div>
-        <div class="info-block" *ngIf="user?.role == 'teacher'">
+        <div class="info-block" *ngIf="displayCourses">
           <span>Courses Teaching</span>
           <span>{{ user?.courses?.length }}</span>
+        </div>
+        <div class="controls" *ngIf="canEditProfile">
+          <a routerLink="/user/{{ user?._id! }}/edit">Edit</a>
         </div>
       </div>
     </div>
@@ -32,7 +35,7 @@
       [title]="courseTitle"
       [isUser]="true"
       [userCourses]="user?.courses || []"
-      *ngIf="user?.role == 'teacher'"
+      *ngIf="displayCourses"
     />
   </ng-container>
 

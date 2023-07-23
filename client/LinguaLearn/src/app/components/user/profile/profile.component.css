@@ -48,6 +48,31 @@
   padding: 20px;
 }
 
+.right-side .controls {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-side .controls a {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  background-color: #6291de;
+  border: 1px solid white;
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  transition: 0.3s all ease;
+}
+
+.right-side .controls a:hover {
+  color: #6291de;
+  background-color: white;
+}
+
 .left-side img {
   width: 200px;
   border-radius: 5px;

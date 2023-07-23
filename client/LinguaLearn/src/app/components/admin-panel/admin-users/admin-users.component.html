@@ -1,0 +1,28 @@
+<div class="title">Users</div>
+<form
+  class="search-users"
+  #searchForm="ngForm"
+  (ngSubmit)="searchUser(searchForm)"
+>
+  <input
+    type="text"
+    name="search"
+    id="search"
+    placeholder="Search user by name"
+    ngModel
+  />
+</form>
+<div class="users-admin" *ngIf="users.length > 0">
+  <div class="user-admin" *ngFor="let user of users">
+    <div class="username">{{ user.username }}</div>
+    <div class="email">{{ user.email }}</div>
+    <div class="name">{{ user.firstName }}</div>
+    <div class="name">{{ user.lastName }}</div>
+    <div class="role">{{ user.role | titlecase }}</div>
+    <div class="actions">
+      <a routerLink="/user/{{ user._id }}/edit">Edit</a>
+      <a (click)="deleteUser(user._id!)">Delete</a>
+      <a routerLink="/user/{{ user._id }}">Profile</a>
+    </div>
+  </div>
+</div>

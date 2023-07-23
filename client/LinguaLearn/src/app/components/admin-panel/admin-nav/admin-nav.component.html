@@ -1,0 +1,18 @@
+<div class="nav">
+  <div class="title">Admin Panel</div>
+  <a
+    [routerLink]="[{ outlets: { panel: ['dashboard'] } }]"
+    routerLinkActive="active-link"
+    ><i class="fa-solid fa-table-cells-large"></i> Dashboard</a
+  >
+  <a
+    [routerLink]="[{ outlets: { panel: ['courses'] } }]"
+    routerLinkActive="active-link"
+    ><i class="fa-solid fa-book-open-reader"></i> Courses</a
+  >
+  <a
+    [routerLink]="[{ outlets: { panel: ['users'] } }]"
+    routerLinkActive="active-link"
+    ><i class="fa-solid fa-users"></i> Users</a
+  >
+</div>

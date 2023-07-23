@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, title: 'Log In | LinguaLearn' },
@@ -15,6 +16,11 @@ const routes: Routes = [
     path: ':userId',
     component: ProfileComponent,
     title: 'User Profile | LinguaLearn',
+  },
+  {
+    path: ':userId/edit',
+    component: EditComponent,
+    title: 'Edit Profile | LinguaLearn',
   },
 ];
 

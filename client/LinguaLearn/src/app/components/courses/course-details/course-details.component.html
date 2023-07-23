@@ -67,7 +67,7 @@
                 <a
                   class="user-control"
                   *ngIf="canManageCourse"
-                  (click)="removeStudent(student._id)"
+                  (click)="removeStudent(student._id!)"
                 >
                   <i class="fa-solid fa-trash"></i>
                 </a>

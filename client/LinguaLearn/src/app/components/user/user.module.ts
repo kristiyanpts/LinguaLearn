@@ -7,9 +7,10 @@ import { UserRoutingModule } from './user-routing.module';
 import { CoursesModule } from '../courses/courses.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, ProfileComponent],
+  declarations: [LoginComponent, RegisterComponent, ProfileComponent, EditComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

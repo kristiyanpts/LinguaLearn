@@ -1,0 +1,168 @@
+<section class="auth-page">
+  <form class="auth-form" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="auth-title">Edit Profile</div>
+    <div class="input-field">
+      <label for="email">Email:</label>
+      <i class="fa-solid fa-envelope"></i>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter your email address"
+        formControlName="email"
+        required
+      />
+    </div>
+    <div class="input-field">
+      <label for="username">Username:</label>
+      <i class="fa-solid fa-user"></i>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder="Enter your username"
+        formControlName="username"
+        required
+      />
+    </div>
+    <div class="input-field">
+      <label for="firstName">Firstname:</label>
+      <i class="fa-solid fa-signature"></i>
+      <input
+        type="text"
+        name="firstName"
+        id="firstName"
+        placeholder="Enter your firstname"
+        formControlName="firstName"
+        required
+      />
+    </div>
+    <div class="input-field">
+      <label for="lastName">Lastname:</label>
+      <i class="fa-solid fa-signature"></i>
+      <input
+        type="text"
+        name="lastName"
+        id="lastName"
+        placeholder="Enter your lastname"
+        formControlName="lastName"
+        required
+      />
+    </div>
+    <div class="input-field">
+      <label for="image">Profile Picture:</label>
+      <i class="fa-solid fa-image"></i>
+      <input
+        type="text"
+        name="image"
+        id="image"
+        placeholder="Enter your avatars URL"
+        formControlName="image"
+        required
+      />
+    </div>
+    <div class="input-field">
+      <label for="role">You are a:</label>
+      <select name="role" id="role" formControlName="role" required>
+        <option value="student" [disabled]="!isAdmin">Student</option>
+        <option value="teacher" [disabled]="!isAdmin">Teacher</option>
+        <option value="admin" [disabled]="!isAdmin">Admin</option>
+        <option value="owner" disabled>Owner</option>
+      </select>
+    </div>
+
+    <div
+      class="form-errors full-length"
+      *ngIf="editForm.touched && editForm.invalid"
+    >
+      <div class="title">Form Invalid</div>
+
+      <!-- Email Validations -->
+      <ng-container *ngIf="editForm.controls.email.touched">
+        <div
+          class="form-error"
+          *ngIf="editForm.controls.email.errors?.['required']"
+        >
+          <span>Email is required.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="editForm.controls.email.errors?.['pattern']"
+        >
+          <span>Email format is not valid.</span>
+        </div>
+      </ng-container>
+
+      <!-- Username Validations -->
+      <ng-container *ngIf="editForm.controls.username.touched">
+        <div
+          class="form-error"
+          *ngIf="editForm.controls.username.errors?.['required']"
+        >
+          <span>Username is required.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="editForm.controls.username.errors?.['minlength']"
+        >
+          <span>Username must be at least 5 characters long.</span>
+        </div>
+      </ng-container>
+
+      <!-- First name Validations -->
+      <ng-container *ngIf="editForm.controls.firstName.touched">
+        <div
+          class="form-error"
+          *ngIf="editForm.controls.firstName.errors?.['required']"
+        >
+          <span>First name is required.</span>
+        </div>
+      </ng-container>
+
+      <!-- Last name Validations -->
+      <ng-container *ngIf="editForm.controls.lastName.touched">
+        <div
+          class="form-error"
+          *ngIf="editForm.controls.lastName.errors?.['required']"
+        >
+          <span>Last name is required.</span>
+        </div>
+      </ng-container>
+
+      <!-- Image Validations -->
+      <ng-container *ngIf="editForm.controls.image.touched">
+        <div
+          class="form-error"
+          *ngIf="editForm.controls.image.errors?.['required']"
+        >
+          <span>Image is required.</span>
+        </div>
+        <div
+          class="form-error"
+          *ngIf="editForm.controls.image.errors?.['pattern']"
+        >
+          <span>Image URL is not valid.</span>
+        </div>
+      </ng-container>
+
+      <!-- Role Validations -->
+      <ng-container *ngIf="editForm.controls.role.touched">
+        <div
+          class="form-error"
+          *ngIf="editForm.controls.role.errors?.['required']"
+        >
+          <span>Role is required.</span>
+        </div>
+      </ng-container>
+
+      <!-- All data validation -->
+      <ng-container *ngIf="editForm.touched">
+        <div class="form-error" *ngIf="editForm.invalid">
+          <span>Not all data is filled in or not all data is correct.</span>
+        </div>
+      </ng-container>
+    </div>
+
+    <button type="submit" [disabled]="editForm.invalid">Edit</button>
+  </form>
+</section>

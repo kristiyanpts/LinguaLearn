@@ -1,0 +1,159 @@
+.title {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+.courses-admin {
+  width: 1000px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.course-admin {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.course-admin .name {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.course-admin .teacher {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.course-admin .level {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.course-admin .capacity {
+  width: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.course-admin .date {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.course-admin .duration {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.course-admin .actions {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.course-admin .actions a {
+  position: relative;
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50px;
+  background-color: #6291de;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s all ease;
+}
+
+.course-admin .actions a:hover {
+  color: #6291de;
+  background-color: white;
+}
+
+.search-courses {
+  position: relative;
+  width: 1000px;
+  height: 40px;
+}
+
+.search-courses input {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 1500px) {
+  .course-admin .duration {
+    display: none;
+  }
+  .course-admin .date {
+    width: 19%;
+  }
+  .courses-admin {
+    width: 800px;
+  }
+  .search-courses {
+    width: 800px;
+  }
+  .course-admin .actions a {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .course-admin .date {
+    display: none;
+  }
+  .course-admin .teacher {
+    width: 25%;
+  }
+  .course-admin .level {
+    width: 15%;
+  }
+  .course-admin .capacity {
+    width: 10%;
+  }
+
+  .courses-admin {
+    width: 600px;
+  }
+  .search-courses {
+    width: 600px;
+  }
+}

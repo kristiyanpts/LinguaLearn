@@ -11,6 +11,6 @@ export interface Course {
   duration: string;
   description: string;
   schedule: LessonModel[];
-  teacher: User | string;
+  teacher: User;
   students: User[];
 }

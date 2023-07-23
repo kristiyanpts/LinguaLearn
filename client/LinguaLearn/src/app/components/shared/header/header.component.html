@@ -39,6 +39,11 @@
           ><i class="fa-solid fa-user"></i>{{ username }}'s Profile</a
         >
       </li>
+      <li *ngIf="isAdmin">
+        <a routerLink="/admin-panel/default" routerLinkActive="active-link"
+          ><i class="fa-solid fa-user-shield"></i>Administrator</a
+        >
+      </li>
       <li>
         <a (click)="logout()" routerLinkActive="active-link"
           ><i class="fa-solid fa-right-from-bracket"></i> Logout</a

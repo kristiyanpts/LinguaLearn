@@ -36,6 +36,10 @@ export class HeaderComponent {
     return this.authService.isTeacher();
   }
 
+  get isAdmin() {
+    return this.authService.isAdmin();
+  }
+
   logout(): void {
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/user/login']);

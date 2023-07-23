@@ -3,6 +3,8 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/core/models/courseModel';
 import { LessonModel } from 'src/app/core/models/lessonModel';
+import { User } from 'src/app/core/models/userModel';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { CourseService } from 'src/app/core/services/course.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { checkDates } from 'src/app/core/validators/date.validator';
@@ -14,6 +16,7 @@ import { checkDates } from 'src/app/core/validators/date.validator';
 })
 export class CourseEditComponent implements OnInit {
   course: Course | undefined;
+  teacher: User | undefined;
   isDataLoading: boolean = false;
   courseLessonsModel = {
     lessonName: new FormControl('', [Validators.required]),
@@ -84,6 +87,7 @@ export class CourseEditComponent implements OnInit {
   constructor(
     private notificationService: NotificationService,
     private coursesService: CourseService,
+    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -91,8 +95,18 @@ export class CourseEditComponent implements OnInit {
   ngOnInit(): void {
     this.isDataLoading = true;
     let courseId: string = this.route.snapshot.params['courseId'];
+    let isAdmin = this.authService.isAdmin();
+
     this.coursesService.getById(courseId).subscribe({
       next: (course: Course) => {
+        if (course.teacher._id != this.authService.getUserId() && !isAdmin) {
+          this.notificationService.showNotification(
+            'error',
+            'Error',
+            'You are not authorized to edit this course'
+          );
+          this.router.navigate([`/courses/${courseId}`]);
+        }
         this.isDataLoading = false;
         this.course = course;
         this.courseForm.controls.name.setValue(this.course.name);
@@ -136,6 +150,9 @@ export class CourseEditComponent implements OnInit {
         'Lesson dates are not valid!'
       );
     } else {
+      this.teacher = this.course?.teacher || {
+        _id: sessionStorage.getItem('id') || '',
+      };
       this.course = {
         _id: this.course?._id,
         name: this.courseForm.get('name')?.value || '',
@@ -146,7 +163,7 @@ export class CourseEditComponent implements OnInit {
         duration: this.courseForm.get('duration')?.value || '',
         description: this.courseForm.get('description')?.value || '',
         schedule: lessonDates,
-        teacher: this.course?.teacher || sessionStorage.getItem('id') || '',
+        teacher: this.teacher,
         students: this.course?.students || [],
       };
 

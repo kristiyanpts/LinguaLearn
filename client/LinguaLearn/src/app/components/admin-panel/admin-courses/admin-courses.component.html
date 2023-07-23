@@ -1,0 +1,31 @@
+<div class="title">Courses</div>
+<form
+  class="search-courses"
+  #searchForm="ngForm"
+  (ngSubmit)="searchCourse(searchForm)"
+>
+  <input
+    type="text"
+    name="search"
+    id="search"
+    placeholder="Search course by name"
+    ngModel
+  />
+</form>
+<div class="courses-admin" *ngIf="courses.length > 0">
+  <div class="course-admin" *ngFor="let course of courses">
+    <div class="name">{{ course.name }}</div>
+    <div class="teacher">
+      {{ course.teacher.firstName }} {{ course.teacher.lastName }}
+    </div>
+    <div class="level">{{ course.level | titlecase }}</div>
+    <div class="capacity">{{ course.capacity }}</div>
+    <div class="date">{{ course.date }}</div>
+    <div class="duration">{{ course.duration }}</div>
+    <div class="actions">
+      <a routerLink="/courses/{{ course._id }}/edit">Edit</a>
+      <a (click)="deleteCourse(course._id!)">Delete</a>
+      <a routerLink="/courses/{{ course._id }}">Details</a>
+    </div>
+  </div>
+</div>

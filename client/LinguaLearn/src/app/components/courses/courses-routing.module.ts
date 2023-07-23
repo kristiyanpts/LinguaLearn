@@ -4,7 +4,7 @@ import { CoursesComponent } from './courses/courses.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { CourseCreateComponent } from './course-create/course-create.component';
 import { CourseEditComponent } from './course-edit/course-edit.component';
-import { AuthGuard } from 'src/app/core/guards/auth.gurad';
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
 import { RoleGuard } from 'src/app/core/guards/role.guard';
 
 const routes: Routes = [

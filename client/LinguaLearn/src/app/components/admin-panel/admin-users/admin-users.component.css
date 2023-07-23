@@ -1,0 +1,139 @@
+.title {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+.users-admin {
+  width: 1000px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.user-admin {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.user-admin .username {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.user-admin .email {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.user-admin .name {
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.user-admin .role {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+
+.user-admin .actions {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.user-admin .actions a {
+  position: relative;
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50px;
+  background-color: #6291de;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s all ease;
+}
+
+.user-admin .actions a:hover {
+  color: #6291de;
+  background-color: white;
+}
+
+.search-users {
+  position: relative;
+  width: 1000px;
+  height: 40px;
+}
+
+.search-users input {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 1500px) {
+  .user-admin .username {
+    display: none;
+  }
+  .user-admin .email {
+    width: 30%;
+  }
+  .users-admin {
+    width: 800px;
+  }
+  .search-users {
+    width: 800px;
+  }
+  .users-admin .actions a {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .user-admin .role {
+    display: none;
+  }
+  .user-admin .name {
+    width: 18%;
+  }
+  .user-admin .email {
+    width: 40%;
+  }
+  .users-admin {
+    width: 600px;
+  }
+  .search-users {
+    width: 600px;
+  }
+}
