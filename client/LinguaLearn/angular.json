@@ -93,6 +93,14 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/lingua-learn",
+            "netlifyToken": "EKzFjtdvlCc8GBiXql8FXS50jCS04XP-3jlkTj9b4lc",
+            "siteId": "b8bcedcf-c0d3-42a6-8048-a6f53d284d44"
+          }
         }
       }
     }
