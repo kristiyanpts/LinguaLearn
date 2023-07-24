@@ -13,7 +13,6 @@ export class HeaderComponent {
 
   toggleMenu(): void {
     this.isMenuShown = !this.isMenuShown;
-    console.log(this.isMenuShown);
   }
 
   getMenuClass(): string {
