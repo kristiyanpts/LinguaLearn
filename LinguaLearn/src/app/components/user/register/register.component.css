@@ -156,4 +156,7 @@ input.ng-valid.ng-touched {
   footer {
     position: relative;
   }
+  .auth-form button {
+    width: 100%;
+  }
 }

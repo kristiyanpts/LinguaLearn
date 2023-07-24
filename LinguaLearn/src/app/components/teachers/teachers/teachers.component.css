@@ -154,4 +154,8 @@
     align-items: center;
     text-align: center;
   }
+
+  .filters {
+    width: 400px !important;
+  }
 }
