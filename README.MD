@@ -16,7 +16,7 @@ You can check out the project at: [https://lingua-learn.netlify.app/home](https:
 
 You can check out the Back-End REST API at: [https://github.com/kristiyanpts/Angular-Final-Project-REST-API](https://github.com/kristiyanpts/Angular-Final-Project-REST-API)
 
-### IMPORTANT
+### IMPORTANT!
 
 Back-End REST API is hosted on [Render](https://render.com/) with a free plan that has some limitations. If you get a blank error when you enter the website or courses aren't loading, please wait for up to 2 minutes and refresh. The reason for that is due to the host being free and if not used recently it spins down.
 
