@@ -41,15 +41,29 @@ Back-End REST API is hosted on [Render](https://render.com/) with a free plan th
 
 ## 4. Scripts
 ### 1. Starting the application locally
+
+**OPTIONAL** - If you want to start the application fully locally
+
 Step 1: Download or clone this repository
+
+- Step 1.1 (Optional): Download or clone the following repositoty containing the REST API - [https://github.com/kristiyanpts/LinguaLearn-REST-API](https://github.com/kristiyanpts/LinguaLearn-REST-API)
+- Step 1.2 (Optional) - To run the app locally you also need to download MongoDB
 
 Step 2: Open it in VS Code
 
-Step 3: Open a terminal
+- Step 2.1 (Optional): Open the REST API in a different VS Code window
+- Step 2.2 (Optional): Head to LinguaLearn/src/app/core/constants/api.constants.ts and uncomment the second line
+
+Step 3: Open a terminal (Both windows)
 
 Step 4: Run the following commands
 
 ```
+REST API Window:
+npm i
+npm start
+
+Project Window:
 npm i
 npm start OR ng serve
 ```
