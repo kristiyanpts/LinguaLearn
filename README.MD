@@ -1,7 +1,7 @@
 
 # LinguaLearn
 
-LinguaLearn is an Angular CRUD application built as a final project for the course I currently attend - Angular June 2023 @SoftUni. LinguaLearn is an educational application that can help you learn the language that you have wanted to learn since you were a kid, but never had the chance to. The application is fully responsive, so you can use it from every device!
+LinguaLearn is an Angular CRUD application built as a final project for the course I currently attend - Angular June 2023 @SoftUni. LinguaLearn is an educational application that can help you learn the language that you have wanted to learn since you were a kid, but never had the chance to. The application is fully responsive, so you can use it from any device!
 
 # 1. Technical Description
 
