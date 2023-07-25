@@ -1,6 +1,6 @@
 <header>
   <img src="/assets/logo.png" alt="" />
-  <ul class="navlist" [ngClass]="getMenuClass()">
+  <ul class="navlist" [ngClass]="getMenuClass()" (click)="toggleMenu()">
     <li>
       <a routerLink="/home" routerLinkActive="active-link"
         ><i class="fa-solid fa-house"></i> Home</a
