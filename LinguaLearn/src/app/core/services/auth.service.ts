@@ -3,6 +3,7 @@ import { API_URL } from '../constants/api.constants';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/userModel';
+import { ADMIN_LIST } from '../constants/admin.constants';
 
 @Injectable({
   providedIn: 'root',
@@ -25,8 +26,9 @@ export class AuthService {
 
   isAdmin(): boolean {
     return (
-      sessionStorage.getItem('role') == 'admin' ||
-      sessionStorage.getItem('role') == 'owner'
+      (sessionStorage.getItem('role') == 'admin' ||
+        sessionStorage.getItem('role') == 'owner') &&
+      ADMIN_LIST.includes(this.getUserId()!)
     );
   }
 
